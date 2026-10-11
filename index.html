@@ -269,7 +269,7 @@ section{padding:60px 26px;}
   color:var(--gold);filter:drop-shadow(0 0 5px rgba(247,231,206,.95));
   user-select:none;line-height:1;
 }
-#sdc .eyebrow,#sdc .sec-title,#sdc .dc-note,#sdc .dc-warn,#sdc .dc-figures{position:relative;z-index:1;}
+#sdc .eyebrow,#sdc .sec-title,#sdc .dc-note,#sdc .dc-warn,#sdc .dc-looks,#sdc .dc-avoid-block{position:relative;z-index:1;}
 @media(prefers-reduced-motion:reduce){.dc-glow-layer{animation:none;}}
 
 /* ── FAMILIA ── */
@@ -279,45 +279,194 @@ section{padding:60px 26px;}
 .amp{font-style:italic;font-size:15px;color:var(--gold);}
 .flor{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--gold);opacity:.5;letter-spacing:10px;}
 
-/* ── GALERÍA / WHEEL ── */
-.gallery{padding:60px 0 80px;}
-.gallery-head{text-align:center;margin-bottom:50px;padding:0 26px;}
+
+/* ════════ GALERÍA — CARRUSEL 3D (fabiola-y-fernando; auto-giro que vuelve tras arrastrar) ════════ */
+.gallery{padding:60px 0 70px;overflow:hidden;}
+.gallery-head{text-align:center;padding:0 26px;}
 .gallery-sub{font-family:'Great Vibes',cursive;color:var(--gold);font-size:32px;line-height:1;margin-top:8px;}
-.wheel-stage{position:relative;width:100%;height:min(960px,108vw);max-width:1080px;margin:0 auto;padding:clamp(20px,4vw,60px);display:flex;align-items:center;justify-content:center;}
-.wheel{position:relative;width:min(840px,92vw);height:min(840px,92vw);border-radius:50%;}
-.wheel-spoke{position:absolute;inset:-2px;border-radius:50%;border:1px solid rgba(184,115,51,0.30);}
-.wheel-spoke--inner{inset:min(120px,15%);border-style:dashed;opacity:.5;}
-.wheel-item{
-  position:absolute;
-  --r:min(390px,43vw);
-  --angle:calc(var(--i) * (360deg / 12));
-  left:50%;top:50%;
-  width:min(280px,28vw);
-  height:min(360px,36vw);
-  margin-left:calc(min(280px,28vw) / -2);
-  margin-top:calc(min(360px,36vw) / -2);
-  transform:rotate(var(--angle)) translateY(calc(-1 * var(--r))) rotate(calc(-1 * var(--angle)));
-  border-radius:8px;overflow:hidden;
-  box-shadow:0 8px 32px rgba(0,0,0,.2),0 1px 4px rgba(0,0,0,.1);
-}
-.wheel-item-inner{position:relative;width:100%;height:100%;cursor:zoom-in;}
-.wheel-item-inner img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;transition:transform .6s ease;}
-.wheel-item-inner:hover img{transform:scale(1.05);}
-.wheel-hub{position:absolute;width:clamp(50px,7vw,80px);height:clamp(50px,7vw,80px);color:var(--gold);opacity:.6;}
+.wheel-scene{position:relative;width:100%;height:440px;margin:26px auto 0;perspective:1400px;transform-style:preserve-3d;overflow:visible;}
+.wheel-ring{position:absolute;width:100%;height:100%;transform-style:preserve-3d;cursor:grab;touch-action:pan-y;}
+.wheel-ring.dragging{cursor:grabbing;}
+.wheel-card{position:absolute;width:190px;height:265px;left:50%;top:50%;margin-left:-95px;margin-top:-132px;
+  border-radius:18px;overflow:hidden;border:2px solid rgba(184,115,51,.38);box-shadow:0 12px 40px rgba(46,65,40,.25);
+  user-select:none;-webkit-user-select:none;backface-visibility:hidden;-webkit-backface-visibility:hidden;cursor:pointer;}
+.wheel-card img{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;}
+.gal-hint{text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:16px;color:var(--gold);margin-top:6px;padding:0 20px;}
+.lightbox[hidden]{display:none!important;}
+.lightbox{position:fixed;inset:0;z-index:11000;background:rgba(20,28,18,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .3s ease;padding:24px;}
+.lightbox.open{opacity:1;}
+.lb-img{max-width:92vw;max-height:82vh;border-radius:14px;box-shadow:0 24px 64px rgba(0,0,0,.5);}
+.lb-close,.lb-arrow{position:absolute;background:rgba(255,255,255,.12);border:1px solid rgba(247,231,206,.35);border-radius:50%;width:48px;height:48px;
+  display:flex;align-items:center;justify-content:center;cursor:pointer;color:#fff;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);}
+.lb-close svg,.lb-arrow svg{width:22px;height:22px;}
+.lb-close{top:16px;right:16px;}
+.lb-prev{left:12px;top:50%;transform:translateY(-50%);}
+.lb-next{right:12px;top:50%;transform:translateY(-50%);}
 
-/* ── WHEEL SPARKS ── */
-#wheel-spark-layer{position:absolute;inset:0;pointer-events:none;z-index:10;overflow:visible;}
-.wheel-spark{
-  position:absolute;pointer-events:none;transform-origin:center center;will-change:transform,opacity;
-  filter:drop-shadow(0 0 5px rgba(247,231,206,.9));
-}
+/* ════════ DRESS CODE — botones "Ver ideas" + visor con marco (fabiola-y-fernando) ════════ */
+.dc-looks{display:flex;flex-direction:column;gap:12px;max-width:380px;margin:8px auto 30px;position:relative;z-index:1;}
+.dc-look{display:flex;align-items:center;gap:14px;width:100%;padding:14px 16px;cursor:pointer;border-radius:14px;text-align:left;
+  border:1px solid rgba(184,115,51,.38);background:linear-gradient(120deg,#FFFFFF 0%,var(--surface) 100%);
+  box-shadow:0 10px 24px rgba(46,65,40,.12);transition:transform .22s cubic-bezier(.34,1.56,.64,1),border-color .22s;
+  animation:dcLookBreathe 3.4s ease-in-out infinite;-webkit-tap-highlight-color:transparent;font:inherit;}
+.dc-looks .dc-look:nth-child(2){animation-delay:1.7s;}
+@keyframes dcLookBreathe{0%,100%{box-shadow:0 10px 24px rgba(46,65,40,.12),0 0 0 0 rgba(184,115,51,0)}50%{box-shadow:0 10px 24px rgba(46,65,40,.12),0 0 20px 2px rgba(184,115,51,.25)}}
+.dc-look:hover,.dc-look:focus-visible{transform:translateY(-3px);border-color:var(--copper);outline:none;}
+.dc-look-ico{flex:0 0 auto;width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;
+  background:linear-gradient(140deg,#8FAF7C,var(--accent) 55%,var(--dark));box-shadow:0 4px 12px rgba(46,65,40,.35),inset 0 1px 0 rgba(255,255,255,.35);}
+.dc-look-ico svg{width:24px;height:24px;}
+.dc-look-txt{display:flex;flex-direction:column;gap:2px;flex:1;}
+.dc-look-rol{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:700;font-size:23px;color:var(--dark);line-height:1.15;}
+.dc-look-cta{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:14px;letter-spacing:2.4px;text-transform:uppercase;color:var(--gold);}
+.dc-look-arrow{flex:0 0 auto;width:22px;height:22px;color:var(--gold);animation:dcArrowNudge 1.9s ease-in-out infinite;}
+.dc-look-arrow svg{width:100%;height:100%;}
+@keyframes dcArrowNudge{0%,100%{transform:translateX(0);opacity:.6}50%{transform:translateX(4px);opacity:1}}
+.dc-viewer{position:fixed;inset:0;z-index:100000;display:flex;align-items:center;justify-content:center;padding:16px;
+  background:rgba(46,65,40,.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);opacity:0;transition:opacity .28s ease;}
+.dc-viewer[hidden]{display:none;}
+.dc-viewer.on{opacity:1;}
+.dcv-box{position:relative;width:min(92vw,440px);border-radius:20px;overflow:hidden;background:var(--bg);border:1px solid rgba(184,115,51,.5);
+  box-shadow:0 26px 70px rgba(30,42,26,.45);padding:18px 0 16px;}
+.dcv-head{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:700;font-size:24px;color:var(--gold);text-align:center;margin:0 56px 14px;}
+.dcv-viewport{overflow:hidden;}
+.dcv-track{display:flex;transition:transform .42s cubic-bezier(.25,.8,.25,1);touch-action:pan-y;}
+.dcv-slide{flex:0 0 100%;margin:0;display:flex;justify-content:center;padding:0 40px;}
+.dcv-frame{position:relative;width:100%;max-width:300px;height:min(56vh,440px);padding:14px;border-radius:6px;
+  background:linear-gradient(145deg,#F7E7CE 0%,#B87333 30%,#F7E7CE 52%,#9A5C26 74%,#EBCFA8 100%);
+  box-shadow:0 14px 30px rgba(30,42,26,.28),inset 0 0 0 1px rgba(255,255,255,.55),inset 0 0 0 4px rgba(85,112,74,.2);}
+.dcv-mat{position:relative;height:100%;border-radius:3px;display:flex;align-items:flex-end;justify-content:center;padding:20px 18px 14px;
+  background:radial-gradient(ellipse 72% 58% at 50% 62%,#FFFFFF 0%,#F6F8F1 62%,#E4EDDA 100%);
+  box-shadow:inset 0 0 0 1px rgba(85,112,74,.3),inset 0 0 0 7px #F6F8F1,inset 0 0 0 8px rgba(184,115,51,.5),inset 0 3px 10px rgba(30,42,26,.16);}
+.dcv-mat img{max-height:100%;max-width:100%;object-fit:contain;display:block;filter:drop-shadow(0 6px 10px rgba(30,42,26,.2));}
+.dcv-frame::before,.dcv-frame::after{content:'';position:absolute;width:18px;height:18px;border:1.5px solid var(--dark);opacity:.5;pointer-events:none;}
+.dcv-frame::before{top:6px;left:6px;border-right:none;border-bottom:none;}
+.dcv-frame::after{bottom:6px;right:6px;border-left:none;border-top:none;}
+.dcv-cap{margin:14px 16px 8px;text-align:center;font-family:'Cormorant Garamond',serif;font-weight:700;font-size:15px;letter-spacing:1.6px;text-transform:uppercase;color:var(--dark);}
+.dcv-dots{display:flex;justify-content:center;gap:9px;}
+.dcv-dot{width:9px;height:9px;border-radius:50%;padding:0;cursor:pointer;border:1px solid var(--accent);background:transparent;transition:transform .2s,background .2s;}
+.dcv-dot.on{background:var(--accent);transform:scale(1.25);}
+.dcv-nav,.dc-viewer-close{position:absolute;z-index:3;width:40px;height:40px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  color:#fff;border:none;background:linear-gradient(140deg,#8FAF7C,var(--accent) 55%,var(--dark));box-shadow:0 6px 16px rgba(30,42,26,.35);}
+.dcv-nav{top:50%;transform:translateY(-50%);}
+.dcv-nav svg{width:20px;height:20px;}.dc-viewer-close svg{width:18px;height:18px;}
+.dcv-prev{left:6px;}.dcv-next{right:6px;}
+.dc-viewer-close{top:10px;right:10px;z-index:4;}
+.dc-avoid-block{position:relative;z-index:1;text-align:center;}
+.dc-avoid{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:700;letter-spacing:.8px;color:var(--gold);}
+.dc-swatches{display:inline-flex;gap:18px;justify-content:center;margin:16px auto 0;}
+.dc-swatch-dot{width:30px;height:30px;border-radius:50%;display:inline-block;position:relative;box-shadow:0 4px 14px rgba(30,42,26,.18);}
+.dc-swatch-dot::after{content:'';position:absolute;inset:-5px;border-radius:50%;border:1px dashed rgba(46,65,40,.4);}
+.dc-swatch-dot::before{content:'';position:absolute;left:50%;top:-4px;bottom:-4px;width:1.5px;background:#9A5C26;transform:translateX(-50%) rotate(45deg);}
+@media(prefers-reduced-motion:reduce){.dc-look,.dc-look-arrow{animation:none;}}
 
-/* ── LIGHTBOX ── */
-#lightbox{position:fixed;inset:0;z-index:9990;display:none;align-items:center;justify-content:center;padding:clamp(16px,4vw,48px);background:rgba(20,28,18,.85);backdrop-filter:blur(18px) saturate(1.15);-webkit-backdrop-filter:blur(18px) saturate(1.15);opacity:0;cursor:zoom-out;}
-#lightbox.is-open{display:flex;}
-#lightbox-img{max-width:min(94vw,1400px);max-height:min(86vh,1000px);width:auto;height:auto;object-fit:contain;border-radius:14px;box-shadow:0 28px 90px rgba(0,0,0,.6);opacity:0;transform:scale(.88);}
-#lightbox-close{position:absolute;top:clamp(16px,3vw,32px);right:clamp(16px,3vw,32px);width:48px;height:48px;border:1px solid rgba(184,115,51,.45);background:rgba(20,28,18,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-radius:50%;color:#F8F5EC;font-size:26px;line-height:1;font-family:'Cormorant Garamond',serif;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .3s,transform .3s;}
-#lightbox-close:hover{background:rgba(85,112,74,.8);transform:scale(1.08);}
+/* ════════ MESA DE REGALOS — regalo que se abre + carrusel BBVA (paola-e-ivan) ════════ */
+.gifts-sub{max-width:420px;margin:-12px auto 0;text-align:center;font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:500;line-height:1.6;color:var(--text);}
+.giftbox-stage{position:relative;margin:36px auto 0;max-width:560px;min-height:280px;display:flex;align-items:center;justify-content:center;text-align:center;}
+.giftbox{position:relative;width:170px;cursor:pointer;background:none;border:none;padding:0;transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  -webkit-tap-highlight-color:transparent;touch-action:manipulation;animation:giftBob 3.2s ease-in-out infinite;}
+@keyframes giftBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.giftbox:hover{transform:translateY(-8px) scale(1.03);}
+.giftbox.is-open{pointer-events:none;animation:none;}
+.giftbox svg{width:100%;height:auto;display:block;filter:drop-shadow(0 18px 34px rgba(46,65,40,.3));}
+.giftbox-lid{transform-origin:50% 100%;transition:transform .6s cubic-bezier(.34,1.4,.5,1),opacity .55s ease;}
+.giftbox.is-open .giftbox-lid{transform:translateY(-52px) rotate(-14deg);opacity:0;}
+.giftbox-cta{display:block;margin-top:20px;font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;
+  padding-left:.3em;color:var(--gold);animation:giftPulse 2.6s ease-in-out infinite;transition:opacity .4s;}
+@keyframes giftPulse{0%,100%{opacity:.6}50%{opacity:1}}
+.giftbox-cta.is-hidden{opacity:0;animation:none;}
+#confetti-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:5;}
+.gift-backdrop{position:fixed;top:0;right:0;bottom:0;left:0;height:100vh;height:100dvh;z-index:900;background:rgba(30,42,26,.55);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);opacity:0;pointer-events:none;transition:opacity .45s ease;
+  display:flex;align-items:center;justify-content:center;padding:16px;transform:translateZ(0);}
+.gift-backdrop.is-open{opacity:1;pointer-events:auto;}
+body.gift-locked{overflow:hidden;overscroll-behavior:none;}
+.gift-reveal{position:relative;width:100%;max-width:440px;max-height:calc(100dvh - 32px);overflow-y:auto;background:rgba(251,247,239,.96);
+  border:1px solid rgba(184,115,51,.5);border-radius:18px;padding:36px 0 26px;box-shadow:0 34px 90px rgba(20,28,18,.45);
+  opacity:0;transform:translateY(26px) scale(.94);transition:opacity .5s ease,transform .55s cubic-bezier(.2,.7,.2,1);}
+.gift-backdrop.is-open .gift-reveal{opacity:1;transform:none;}
+.gift-reveal::before{content:"";position:absolute;inset:9px;border:1px solid rgba(184,115,51,.22);border-radius:12px;pointer-events:none;}
+.gift-reveal-eyebrow{font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);text-align:center;}
+.gift-close{position:absolute;top:12px;right:12px;z-index:3;width:40px;height:40px;border-radius:50%;border:1px solid rgba(184,115,51,.5);
+  background:#fff;color:var(--dark);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;transition:transform .3s;}
+.gift-close:hover{transform:rotate(90deg);}
+.gift-close svg{width:16px;height:16px;}
+.gr-viewport{overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;
+  overscroll-behavior-x:contain;touch-action:pan-x pan-y;cursor:grab;outline:none;}
+.gr-viewport::-webkit-scrollbar{display:none;}
+.gr-track{display:flex;min-width:100%;}
+.gr-slide{flex:0 0 100%;width:100%;min-width:100%;scroll-snap-align:center;scroll-snap-stop:always;padding:18px 22px 4px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;}
+.gr-logo{height:44px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
+.gr-logo img{height:34px;width:auto;display:block;-webkit-user-drag:none;}
+.gr-title{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:700;font-size:27px;color:var(--dark);margin-bottom:4px;}
+.gr-bankname{font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+.gr-acc{display:flex;align-items:center;gap:14px;text-align:left;width:100%;max-width:360px;padding:14px 16px;border:1px solid rgba(184,115,51,.38);
+  background:rgba(255,255,255,.7);border-radius:10px;}
+.gr-acc-info{flex:1;min-width:0;}
+.gr-acc-n{font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-bottom:3px;}
+.gr-acc-c{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:700;color:var(--dark);font-variant-numeric:tabular-nums;letter-spacing:.04em;word-break:break-all;}
+.gr-acc-btn{flex-shrink:0;width:44px;height:44px;border-radius:50%;border:1px solid rgba(184,115,51,.5);background:transparent;color:var(--gold);
+  display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;transition:background .3s,color .3s;touch-action:manipulation;}
+.gr-acc-btn svg{width:17px;height:17px;}
+.gr-acc-btn.is-copied{background:var(--accent);color:#fff;border-color:var(--accent);}
+.gr-copied{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:700;color:var(--accent);height:22px;margin-top:8px;opacity:0;transition:opacity .3s;}
+.gr-copied.on{opacity:1;}
+.gr-nav{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:18px;}
+.gr-arrow{width:40px;height:40px;border-radius:50%;border:1px solid rgba(184,115,51,.5);background:transparent;color:var(--gold);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;}
+.gr-arrow:disabled{opacity:.3;cursor:default;}
+.gr-arrow svg{width:15px;height:15px;}
+.gr-dots{display:flex;gap:10px;}
+.gr-dot{width:9px;height:9px;border-radius:50%;border:1px solid rgba(184,115,51,.65);background:transparent;padding:0;cursor:pointer;transition:background .3s,transform .3s;}
+.gr-dot.is-active{background:var(--copper);transform:scale(1.35);}
+.gr-hint{font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--text);opacity:.75;margin-top:12px;text-align:center;}
+
+/* ════════ MESA FÍSICA — etiqueta colgante que se balancea y se voltea (nuevo) ════════ */
+.tag-stage{position:relative;margin:34px auto 0;display:flex;flex-direction:column;align-items:center;}
+.tag-string{width:2px;height:46px;background:linear-gradient(to bottom,rgba(184,115,51,0),#B87333);}
+.tag-knot{width:16px;height:16px;border-radius:50%;margin-top:-4px;background:radial-gradient(circle at 35% 30%,#F7E7CE,#B87333 55%,#7A4A1E);
+  box-shadow:0 2px 6px rgba(30,42,26,.3);z-index:2;}
+.tag-swing{transform-origin:50% -54px;animation:tagSwing 4.2s ease-in-out infinite;margin-top:-8px;}
+.tag-swing.is-flipped{animation-play-state:paused;}
+@keyframes tagSwing{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}
+.tag{position:relative;width:min(300px,84vw);height:190px;perspective:1100px;cursor:pointer;background:none;border:none;padding:0;
+  -webkit-tap-highlight-color:transparent;touch-action:manipulation;font:inherit;}
+.tag:focus-visible{outline:2px solid var(--copper);outline-offset:8px;border-radius:14px;}
+.tag-inner{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .9s cubic-bezier(.3,1.35,.5,1);}
+.tag.is-flipped .tag-inner{transform:rotateY(180deg);}
+.tag-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:16px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;padding:26px 22px 18px;text-align:center;
+  clip-path:polygon(14% 0,86% 0,100% 16%,100% 100%,0 100%,0 16%);}
+.tag-front{background:linear-gradient(150deg,#C7DBB8 0%,#B6CFA5 45%,#9DBB8A 100%);
+  box-shadow:inset 0 0 0 2px rgba(255,255,255,.45),inset 0 0 0 8px rgba(184,115,51,.0);}
+.tag-back{transform:rotateY(180deg);background:linear-gradient(150deg,#FFFDF8 0%,#F7E7CE 100%);}
+.tag-face::before{content:'';position:absolute;inset:9px;border:1.5px dashed rgba(122,74,30,.55);border-radius:10px;
+  clip-path:polygon(13% 0,87% 0,100% 15%,100% 100%,0 100%,0 15%);}
+.tag-hole{position:absolute;top:12px;left:50%;width:14px;height:14px;margin-left:-7px;border-radius:50%;background:var(--bg);
+  box-shadow:inset 0 1px 3px rgba(30,42,26,.4),0 0 0 3px #B87333;}
+.tag-ico{width:44px;height:44px;color:var(--dark);margin-top:8px;}
+.tag-k{font-family:'Cormorant Garamond',serif;font-size:13px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--dark);margin-top:6px;}
+.tag-t{font-family:'Great Vibes',cursive;font-size:34px;line-height:1.05;color:var(--dark);}
+.tag-cta{font-family:'Cormorant Garamond',serif;font-size:13px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:#7A4A1E;margin-top:6px;
+  animation:giftPulse 2.4s ease-in-out infinite;}
+.tag-back .tag-t{font-size:30px;color:var(--gold);margin-top:10px;}
+.tag-p{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;line-height:1.45;color:var(--dark);margin-top:6px;}
+.tag-shine{position:absolute;inset:0;border-radius:16px;pointer-events:none;overflow:hidden;clip-path:inherit;}
+.tag-shine::after{content:'';position:absolute;top:-20%;left:-60%;width:40%;height:140%;transform:skewX(-20deg);
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);animation:tagShine 4.5s ease-in-out infinite;}
+@keyframes tagShine{0%,60%{left:-60%}100%{left:130%}}
+.tag-burst{position:absolute;left:50%;top:60%;width:0;height:0;pointer-events:none;z-index:3;}
+.tag-burst i{position:absolute;width:9px;height:9px;margin:-4px;border-radius:50%;opacity:0;}
+@media(prefers-reduced-motion:reduce){.tag-swing,.tag-shine::after,.giftbox{animation:none;}}
+
+/* ════════ ÁLBUM — QR con blur hasta el día del evento ════════ */
+.album-qr-frame{position:relative;overflow:hidden;}
+.album-qr-frame img{filter:blur(9px) saturate(.7);transform:scale(1.04);}
+.album-lock{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+  background:rgba(251,247,239,.45);text-align:center;padding:14px;}
+.album-lock svg{width:34px;height:34px;color:var(--dark);}
+.album-lock span{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:700;line-height:1.3;color:var(--dark);}
+.album-soon{text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;font-weight:600;color:var(--gold);margin:-6px 0 14px;}
 
 /* ── MESA DE REGALOS ── */
 .gift-grid{display:flex;flex-direction:column;gap:16px;}
@@ -602,7 +751,7 @@ footer .fc{font-size:12px;opacity:.6;}
 
 <!-- ENVELOPE -->
 <div id="envelope-screen" role="button" aria-label="Toca para abrir tu invitación">
-  <img id="env-image" src="./sobre.png" alt="Invitación Paola y Damián">
+  <img id="env-image" src="./sobre.jpg" alt="Invitación Paola y Damián">
   <video id="env-video" src="./sobre-apertura.mp4" playsinline webkit-playsinline muted preload="auto"></video>
   <p class="envelope-hint" id="env-hint">Toca para abrir</p>
 </div>
@@ -777,67 +926,33 @@ footer .fc{font-size:12px;opacity:.6;}
     <div class="eyebrow">Etiqueta</div>
     <h2 class="sec-title">Dress Code</h2>
     <div class="dc-note">Formal</div>
-    <div class="dc-warn">✦ &nbsp; Reservar el blanco para la novia &nbsp; ✦</div>
-    <div class="dc-figures" id="dcFigs">
-
-      <!-- Caballero -->
-      <div class="dc-fig">
-        <svg class="dc-svg" viewBox="0 0 100 200" xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-hidden="true">
-          <!-- Hair -->
-          <path d="M36 60 Q35 46 50 45 Q65 46 64 60 Q58 53 50 54 Q42 53 36 60 Z"/>
-          <!-- Head -->
-          <circle cx="50" cy="64" r="14"/>
-          <!-- Neck -->
-          <rect x="45" y="77" width="10" height="8" rx="2"/>
-          <!-- Suit jacket -->
-          <path d="M18 85 Q25 80 40 82 L42 122 L58 122 L60 82 Q75 80 82 85 L83 136 L17 136 Z"/>
-          <!-- Lapels -->
-          <path d="M40 82 L36 106 L50 100 L64 106 L60 82 L50 86 Z" fill="var(--bg)" opacity=".22"/>
-          <!-- Bolo tie / tie detail -->
-          <polygon points="48,84 45,105 50,101 55,105 52,84" fill="#B87333" opacity=".55"/>
-          <!-- Belt -->
-          <rect x="19" y="134" width="62" height="5" rx="2"/>
-          <!-- Belt buckle -->
-          <rect x="42" y="131" width="16" height="11" rx="2" fill="#B87333"/>
-          <!-- Trousers -->
-          <path d="M19 138 L26 194 L47 191 L50 170 L53 191 L74 194 L81 138 Z"/>
-          <!-- Boots -->
-          <path d="M26 192 L18 200 L46 200 L47 192 Z"/>
-          <path d="M74 192 L53 192 L54 200 L82 200 Z"/>
-        </svg>
-        <div class="dc-fig-name">Caballero</div>
-        <div class="dc-fig-hint">Traje Formal<br>Corbata o Moño</div>
+    <div class="dc-warn">✦ &nbsp; Acompáñanos vestido para la ocasión &nbsp; ✦</div>
+    <div class="dc-looks">
+        <button class="dc-look" type="button" data-look="caballeros" aria-label="Ver ideas de vestimenta para caballeros">
+          <span class="dc-look-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3l4 3 4-3 3 2.2c1.2.9 1.9 2.3 1.9 3.8V21H3V9c0-1.5.7-2.9 1.9-3.8L8 3z"/><path d="M12 6v15"/><path d="M9.4 4.2L12 9l2.6-4.8"/></svg></span>
+          <span class="dc-look-txt"><span class="dc-look-rol">Caballeros</span><span class="dc-look-cta">Ver ideas</span></span>
+          <span class="dc-look-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></span>
+        </button>
+        <button class="dc-look" type="button" data-look="damas" aria-label="Ver ideas de vestimenta para damas">
+          <span class="dc-look-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6l-1.4 5.2L21 21H3l7.4-12.8L9 3z"/><path d="M10.6 8.2h2.8"/></svg></span>
+          <span class="dc-look-txt"><span class="dc-look-rol">Damas</span><span class="dc-look-cta">Ver ideas</span></span>
+          <span class="dc-look-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></span>
+        </button>
+    </div>
+    <div class="dc-viewer" id="dcViewer" role="dialog" aria-modal="true" aria-label="Ideas de vestimenta" hidden>
+      <div class="dcv-box">
+        <button class="dc-viewer-close" id="dcViewerClose" type="button" aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+        <p class="dcv-head" id="dcvHead"></p>
+        <div class="dcv-viewport"><div class="dcv-track" id="dcvTrack"></div></div>
+        <button class="dcv-nav dcv-prev" id="dcvPrev" type="button" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+        <button class="dcv-nav dcv-next" id="dcvNext" type="button" aria-label="Siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
+        <p class="dcv-cap" id="dcvCap"></p>
+        <div class="dcv-dots" id="dcvDots"></div>
       </div>
-
-      <div class="dc-divider" aria-hidden="true"></div>
-
-      <!-- Dama -->
-      <div class="dc-fig">
-        <svg class="dc-svg" viewBox="0 0 100 200" xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-hidden="true">
-          <!-- Hair updo -->
-          <ellipse cx="50" cy="11" rx="13" ry="9"/>
-          <!-- Head -->
-          <circle cx="50" cy="30" r="14"/>
-          <!-- Neck -->
-          <rect x="46" y="43" width="8" height="8" rx="2"/>
-          <!-- Arms -->
-          <path d="M32 52 Q20 63 18 80" stroke="currentColor" stroke-width="10" stroke-linecap="round" fill="none"/>
-          <path d="M68 52 Q80 63 82 80" stroke="currentColor" stroke-width="10" stroke-linecap="round" fill="none"/>
-          <!-- Bodice -->
-          <path d="M32 48 Q37 44 46 47 L47 80 L53 80 L54 47 Q63 44 68 48 L70 84 L30 84 Z"/>
-          <!-- Waist sash -->
-          <rect x="30" y="82" width="40" height="7" rx="3" fill="#B87333" opacity=".65"/>
-          <!-- Ball gown skirt -->
-          <path d="M30 88 Q16 118 4 200 L96 200 Q84 118 70 88 Z"/>
-          <!-- Skirt fold lines -->
-          <path d="M38 89 Q26 130 16 200" stroke="rgba(184,115,51,.28)" stroke-width="1.5" fill="none"/>
-          <path d="M50 89 L50 200"          stroke="rgba(184,115,51,.22)" stroke-width="1.5" fill="none"/>
-          <path d="M62 89 Q74 130 84 200"  stroke="rgba(184,115,51,.28)" stroke-width="1.5" fill="none"/>
-        </svg>
-        <div class="dc-fig-name">Dama</div>
-        <div class="dc-fig-hint">Vestido Largo<br>Estilo Elegante</div>
-      </div>
-
+    </div>
+    <div class="dc-avoid-block">
+      <p class="dc-avoid">Por favor evitar este color</p>
+      <div class="dc-swatches"><span class="dc-swatch-dot" style="background:#FFFFFF;border:1.5px solid rgba(46,65,40,.35);" aria-label="Blanco"></span></div>
     </div>
   </section>
 
@@ -881,41 +996,28 @@ footer .fc{font-size:12px;opacity:.6;}
       <h2 class="sec-title rv">Recuerdos</h2>
       <div class="gallery-sub rv">Paola &amp; Damián</div>
     </div>
-    <div class="wheel-stage">
-      <div id="wheel-spark-layer" aria-hidden="true"></div>
-      <div class="wheel" id="wheel">
-        <span class="wheel-spoke" aria-hidden="true"></span>
-        <span class="wheel-spoke wheel-spoke--inner" aria-hidden="true"></span>
-        <div class="wheel-item" style="--i:0"><div class="wheel-item-inner"><img src="./foto-1.jpg" alt="Foto 1" loading="lazy"></div></div>
-        <div class="wheel-item" style="--i:1"><div class="wheel-item-inner"><img src="./foto-2.jpg" alt="Foto 2" loading="lazy"></div></div>
-        <div class="wheel-item" style="--i:2"><div class="wheel-item-inner"><img src="./foto-3.jpg" alt="Foto 3" loading="lazy"></div></div>
-        <div class="wheel-item" style="--i:3"><div class="wheel-item-inner"><img src="./foto-4.jpg" alt="Foto 4" loading="lazy"></div></div>
-        <div class="wheel-item" style="--i:4"><div class="wheel-item-inner"><img src="./foto-5.jpg" alt="Foto 5" loading="lazy"></div></div>
-        <div class="wheel-item" style="--i:5"><div class="wheel-item-inner"><img src="./foto-6.jpg" alt="Foto 6" loading="lazy"></div></div>
-        <div class="wheel-item" style="--i:6"><div class="wheel-item-inner"><img src="./foto-7.jpg" alt="Foto 7" loading="lazy"></div></div>
-        <div class="wheel-item" style="--i:7"><div class="wheel-item-inner"><img src="./foto-8.jpg" alt="Foto 8" loading="lazy"></div></div>
-        <div class="wheel-item" style="--i:8"><div class="wheel-item-inner"><img src="./foto-9.jpg" alt="Foto 9" loading="lazy"></div></div>
-        <div class="wheel-item" style="--i:9"><div class="wheel-item-inner"><img src="./foto-1.jpg" alt="Foto 10" loading="lazy"></div></div>
-        <div class="wheel-item" style="--i:10"><div class="wheel-item-inner"><img src="./foto-4.jpg" alt="Foto 11" loading="lazy"></div></div>
-        <div class="wheel-item" style="--i:11"><div class="wheel-item-inner"><img src="./foto-7.jpg" alt="Foto 12" loading="lazy"></div></div>
-      </div>
-      <div class="wheel-hub" aria-hidden="true">
-        <svg viewBox="0 0 60 60" fill="none">
-          <g stroke="currentColor" stroke-width=".8" fill="none">
-            <circle cx="30" cy="30" r="18" opacity=".4"/>
-            <circle cx="30" cy="30" r="10"/>
-            <circle cx="30" cy="30" r="3" fill="currentColor"/>
-            <path d="M30 14 L30 20 M30 40 L30 46 M14 30 L20 30 M40 30 L46 30" opacity=".55"/>
-          </g>
-        </svg>
+    <div class="wheel-scene" id="wheel-scene">
+      <div class="wheel-ring" id="wheel-ring">
+        <div class="wheel-card" data-src="foto-1.jpg"><img src="foto-1.jpg" alt="Paola y Damián" draggable="false"></div>
+        <div class="wheel-card" data-src="foto-2.jpg"><img src="foto-2.jpg" alt="Paola y Damián" draggable="false"></div>
+        <div class="wheel-card" data-src="foto-3.jpg"><img src="foto-3.jpg" alt="Paola y Damián" draggable="false"></div>
+        <div class="wheel-card" data-src="foto-4.jpg"><img src="foto-4.jpg" alt="Paola y Damián" draggable="false"></div>
+        <div class="wheel-card" data-src="foto-5.jpg"><img src="foto-5.jpg" alt="Paola y Damián" draggable="false"></div>
+        <div class="wheel-card" data-src="foto-6.jpg"><img src="foto-6.jpg" alt="Paola y Damián" draggable="false"></div>
+        <div class="wheel-card" data-src="foto-7.jpg"><img src="foto-7.jpg" alt="Paola y Damián" draggable="false"></div>
+        <div class="wheel-card" data-src="foto-8.jpg"><img src="foto-8.jpg" alt="Paola y Damián" draggable="false"></div>
+        <div class="wheel-card" data-src="foto-9.jpg"><img src="foto-9.jpg" alt="Paola y Damián" draggable="false"></div>
       </div>
     </div>
+    <p class="gal-hint">Arrastra para girar · toca una foto para ampliar</p>
   </section>
 
   <!-- LIGHTBOX -->
-  <div id="lightbox" role="dialog" aria-modal="true" aria-label="Foto ampliada" aria-hidden="true">
-    <img id="lightbox-img" src="" alt="">
-    <button id="lightbox-close" aria-label="Cerrar">&#x2715;</button>
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Visor de foto" hidden>
+    <button class="lb-close" id="lb-close" aria-label="Cerrar visor"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6 L18 18 M18 6 L6 18"/></svg></button>
+    <button class="lb-arrow lb-prev" id="lb-prev" aria-label="Foto anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 6 L9 12 L15 18"/></svg></button>
+    <img class="lb-img" id="lb-img" alt="">
+    <button class="lb-arrow lb-next" id="lb-next" aria-label="Foto siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 6 L15 12 L9 18"/></svg></button>
   </div>
 
   <!-- ORNAMENTO -->
@@ -933,58 +1035,94 @@ footer .fc{font-size:12px;opacity:.6;}
   <section class="rv" id="sgifts">
     <div class="eyebrow">Con Cariño</div>
     <h2 class="sec-title">Mesa de Regalos</h2>
-    <div style="display:flex;align-items:center;gap:16px;background:var(--card);border-radius:16px;padding:18px 20px;margin-bottom:24px;box-shadow:0 4px 24px rgba(46,65,40,.08);border:1px solid rgba(184,115,51,.22);">
-      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;">
-        <!-- caja -->
-        <rect x="6" y="20" width="36" height="22" rx="3" fill="#55704A" opacity=".12"/>
-        <rect x="6" y="20" width="36" height="22" rx="3" stroke="#B87333" stroke-width="1.6" fill="none"/>
-        <!-- tapa -->
-        <rect x="4" y="14" width="40" height="8" rx="2.5" fill="#55704A" opacity=".1"/>
-        <rect x="4" y="14" width="40" height="8" rx="2.5" stroke="#B87333" stroke-width="1.6" fill="none"/>
-        <!-- moño vertical -->
-        <line x1="24" y1="14" x2="24" y2="42" stroke="#B87333" stroke-width="1.6"/>
-        <!-- lazo izq -->
-        <path d="M24 14 Q18 8 14 10 Q12 14 16 15 Q20 15 24 14Z" fill="#F7E7CE" opacity=".7" stroke="#B87333" stroke-width="1"/>
-        <!-- lazo der -->
-        <path d="M24 14 Q30 8 34 10 Q36 14 32 15 Q28 15 24 14Z" fill="#F7E7CE" opacity=".7" stroke="#B87333" stroke-width="1"/>
-        <!-- brillito -->
-        <circle cx="37" cy="16" r="1.5" fill="#F7E7CE" opacity=".9"/>
-        <circle cx="40" cy="13" r="1" fill="#F7E7CE" opacity=".6"/>
-        <circle cx="34" cy="12" r="1" fill="#F7E7CE" opacity=".5"/>
-      </svg>
+    <p class="gifts-sub">Su presencia es nuestro mejor regalo; si desean tener un detalle con nosotros, les compartimos estas opciones.</p>
+    <div class="giftbox-stage">
+      <canvas id="confetti-canvas" aria-hidden="true"></canvas>
       <div>
-        <div style="font-family:'Cormorant Garamond',serif;font-weight:700;font-size:18px;color:var(--dark);letter-spacing:.5px;margin-bottom:3px;">Habrá Mesa de Regalos Física</div>
-        <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:16px;color:var(--gold);letter-spacing:.5px;line-height:1.55;">También contaremos con mesa de regalos física el día de la celebración</div>
+        <button class="giftbox" id="giftbox" type="button" aria-label="Abrir la mesa de regalos" aria-expanded="false" aria-controls="gift-reveal">
+          <svg viewBox="0 0 200 190" fill="none" aria-hidden="true">
+            <rect x="26" y="72" width="148" height="104" rx="4" fill="#55704A"/>
+            <rect x="26" y="72" width="148" height="104" rx="4" fill="url(#gbShade)"/>
+            <rect x="88" y="72" width="24" height="104" fill="url(#gbCopper)"/>
+            <rect x="26" y="112" width="148" height="15" fill="url(#gbCopper)"/>
+            <rect x="26.7" y="72.7" width="146.6" height="102.6" rx="3.3" stroke="#7A4A1E" stroke-width="1.4"/>
+            <g class="giftbox-lid">
+              <rect x="16" y="54" width="168" height="26" rx="4" fill="#6B8A5D"/>
+              <rect x="16.7" y="54.7" width="166.6" height="24.6" rx="3.3" stroke="#7A4A1E" stroke-width="1.4"/>
+              <rect x="88" y="54" width="24" height="26" fill="url(#gbCopper)"/>
+              <path d="M100 54 C100 40 84 26 70 32 C58 37 62 52 78 54 Z" fill="url(#gbCopper)" stroke="#7A4A1E" stroke-width="1.2"/>
+              <path d="M100 54 C100 40 116 26 130 32 C142 37 138 52 122 54 Z" fill="url(#gbCopper)" stroke="#7A4A1E" stroke-width="1.2"/>
+              <circle cx="100" cy="52" r="8" fill="#F7E7CE" stroke="#7A4A1E" stroke-width="1.2"/>
+            </g>
+            <defs>
+              <linearGradient id="gbShade" x1="26" y1="72" x2="174" y2="176" gradientUnits="userSpaceOnUse"><stop stop-color="#ffffff" stop-opacity=".16"/><stop offset="1" stop-color="#000000" stop-opacity=".22"/></linearGradient>
+              <linearGradient id="gbCopper" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#F7E7CE"/><stop offset=".45" stop-color="#B87333"/><stop offset="1" stop-color="#7A4A1E"/></linearGradient>
+            </defs>
+          </svg>
+        </button>
+        <span class="giftbox-cta" id="giftbox-cta">Toca el regalo</span>
       </div>
     </div>
-    <div class="gift-grid">
-      <div class="gift-card rv">
-        <div class="gift-logo-wrap bank">
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="#fff"><path d="M11.5 2L2 7v2h20V7L11.5 2zm-7 9v8H7v-8H4.5zm4.5 0v8h2v-8H9zm4 0v8h2v-8h-2zm4.5 0v8H19v-8h-1.5zM2 21v2h20v-2H2z"/></svg>
+
+    <div class="gift-backdrop" id="gift-backdrop" role="dialog" aria-modal="true" aria-label="Mesa de regalos">
+      <div class="gift-reveal" id="gift-reveal">
+        <button class="gift-close" id="gift-close" type="button" aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+        <div class="gift-reveal-eyebrow">Elige una opción</div>
+        <div class="gr-viewport" id="gr-viewport">
+          <div class="gr-track" id="gr-track">
+            <div class="gr-slide">
+              <div class="gr-logo"><img src="bbva-logo.svg" alt="BBVA" width="120" height="36" decoding="async"></div>
+              <div class="gr-title">Transferencia</div>
+              <div class="gr-bankname">CLABE</div>
+              <div class="gr-acc">
+                <div class="gr-acc-info"><div class="gr-acc-n">Edgar Damián García Ceja</div><div class="gr-acc-c">012 533 029599862350</div></div>
+                <button class="gr-acc-btn copy-clabe" data-clabe="012533029599862350" type="button" aria-label="Copiar clabe de Damián"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button>
+              </div>
+              <div class="gr-copied" aria-live="polite"></div>
+            </div>
+            <div class="gr-slide">
+              <div class="gr-logo"><img src="bbva-logo.svg" alt="BBVA" width="120" height="36" decoding="async"></div>
+              <div class="gr-title">Transferencia</div>
+              <div class="gr-bankname">Tarjeta</div>
+              <div class="gr-acc">
+                <div class="gr-acc-info"><div class="gr-acc-n">Paola Lizeth Mendoza Araiza</div><div class="gr-acc-c">4152 3138 5036 1218</div></div>
+                <button class="gr-acc-btn copy-clabe" data-clabe="4152313850361218" type="button" aria-label="Copiar tarjeta de Paola"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button>
+              </div>
+              <div class="gr-copied" aria-live="polite"></div>
+            </div>
+          </div>
         </div>
-        <div class="gift-body">
-          <div class="gb-name">Transferencia BBVA</div>
-          <div class="gb-desc">CLABE · Edgar Damián García Ceja</div>
-          <div class="gb-account" id="accountNum1">0125 3302 9599 8623 50</div>
-          <button class="btn-copy" id="copyBtn1" onclick="copyAccount(1)">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-            Copiar CLABE
-          </button>
+        <div class="gr-nav">
+          <button class="gr-arrow" id="gr-prev" type="button" aria-label="Opción anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></button>
+          <div class="gr-dots" id="gr-dots"></div>
+          <button class="gr-arrow" id="gr-next" type="button" aria-label="Siguiente opción"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></button>
         </div>
+        <div class="gr-hint">Desliza para ver la otra cuenta</div>
       </div>
-      <div class="gift-card rv">
-        <div class="gift-logo-wrap bank">
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="#fff"><path d="M11.5 2L2 7v2h20V7L11.5 2zm-7 9v8H7v-8H4.5zm4.5 0v8h2v-8H9zm4 0v8h2v-8h-2zm4.5 0v8H19v-8h-1.5zM2 21v2h20v-2H2z"/></svg>
-        </div>
-        <div class="gift-body">
-          <div class="gb-name">Transferencia BBVA</div>
-          <div class="gb-desc">Tarjeta · Paola Lizeth Mendoza Araiza</div>
-          <div class="gb-account" id="accountNum2">4152 3138 5036 1218</div>
-          <button class="btn-copy" id="copyBtn2" onclick="copyAccount(2)">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-            Copiar Tarjeta
-          </button>
-        </div>
+    </div>
+
+    <!-- MESA FÍSICA: etiqueta colgante -->
+    <div class="tag-stage">
+      <div class="tag-string" aria-hidden="true"></div>
+      <div class="tag-knot" aria-hidden="true"></div>
+      <div class="tag-swing" id="tagSwing">
+        <button class="tag" id="giftTag" type="button" aria-label="Voltear la etiqueta: mesa de regalos física" aria-pressed="false">
+          <span class="tag-inner">
+            <span class="tag-face tag-front">
+              <span class="tag-hole" aria-hidden="true"></span>
+              <svg class="tag-ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="20" width="34" height="22" rx="2"/><rect x="5" y="14" width="38" height="7" rx="2"/><path d="M24 14v28"/><path d="M24 14c-3-6-11-8-11-3 0 3 6 3 11 3zM24 14c3-6 11-8 11-3 0 3-6 3-11 3z"/></svg>
+              <span class="tag-k">Además</span>
+              <span class="tag-cta">Toca para voltear</span>
+              <span class="tag-shine" aria-hidden="true"></span>
+            </span>
+            <span class="tag-face tag-back">
+              <span class="tag-hole" aria-hidden="true"></span>
+              <span class="tag-t">Mesa de regalos física</span>
+              <span class="tag-p">Habrá una mesa de regalos física el día de la celebración</span>
+            </span>
+          </span>
+          <span class="tag-burst" id="tagBurst" aria-hidden="true"></span>
+        </button>
       </div>
     </div>
   </section>
@@ -1029,9 +1167,11 @@ footer .fc{font-size:12px;opacity:.6;}
     <div class="eyebrow">Comparte tus Momentos</div>
     <h2 class="sec-title">Álbum de Fotos</h2>
     <p class="album-sub">Escanea el código y sube tus fotos favoritas<br>de esta celebración especial</p>
+    <p class="album-soon">El código se habilitará el día del evento</p>
     <div class="album-qr-wrap">
       <div class="album-qr-frame">
         <img src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&color=2E4128&bgcolor=FBF7EF&data=https://www.instagram.com/explore/tags/PaolayDamian" alt="QR Álbum de fotos #PaolayDamián" width="180" height="180" loading="lazy">
+        <div class="album-lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span>Disponible el<br>14 de noviembre</span></div>
       </div>
     </div>
     <div class="album-hashtag">#PaolayDamián</div>
@@ -1082,6 +1222,7 @@ footer .fc{font-size:12px;opacity:.6;}
 <audio id="bgAudio" src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/audio/boda-paola-y-damian/cancion.mp3" preload="none" loop></audio>
 
 <script>
+var prefersReducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 window.scrollTo(0,0);
 history.scrollRestoration='manual';
 gsap.registerPlugin(ScrollTrigger);
@@ -1424,9 +1565,7 @@ function initDressCode(){
     trigger:'#sdc', start:'top 80%', end:'bottom top',
     onEnter:function(){
       if(!entered){ entered=true;
-        gsap.fromTo('.dc-fig',{opacity:0,y:28},{opacity:1,y:0,duration:1,stagger:.22,ease:'power2.out'});
-        gsap.fromTo('.dc-divider',{scaleY:0,opacity:0},{scaleY:1,opacity:1,duration:1.2,ease:'power2.out',delay:.15});
-        gsap.to('.dc-svg',{filter:'drop-shadow(0 0 12px rgba(184,115,51,.55))',duration:1.6,ease:'power2.out',delay:.5,yoyo:true,repeat:-1,repeatDelay:1.6});
+        gsap.fromTo('.dc-look',{opacity:0,y:28},{opacity:1,y:0,duration:1,stagger:.22,ease:'power2.out'});
       }
       if(!starTimer) starTimer = setInterval(spawnStar, 320);
     },
@@ -1480,164 +1619,292 @@ function initDressCode(){
 })();
 
 /* ══════════════════════════════════════
-   COPIAR CLABE
+   GALERÍA — CARRUSEL 3D (auto-giro; tras arrastrar vuelve a girar solo)
 ══════════════════════════════════════ */
-function copyAccount(n){
-  var num = document.getElementById('accountNum'+n).textContent;
-  var clean = num.replace(/\s/g,'');
-  var btn = document.getElementById('copyBtn'+n);
-  var orig = btn.innerHTML;
-  function confirm(){
-    btn.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> ¡Copiado!';
-    btn.style.background = 'var(--gold)';
-    btn.style.color = '#fff';
-    setTimeout(function(){ btn.innerHTML=orig; btn.style.background=''; btn.style.color=''; }, 2500);
+(function initWheel3D(){
+  var ring = document.getElementById('wheel-ring');
+  if(!ring) return;
+  var cards = ring.querySelectorAll('.wheel-card'), n = cards.length;
+  var radius = Math.round(Math.max(260, Math.min(340, 120 / Math.tan(Math.PI / n))));
+  var rot = 0, vel = 0, isDrag = false, startX = 0, startRot = 0, lastX = 0, rafId = null;
+  var totalMove = 0, downTarget = null, auto = true, resumeT = null, AUTO_SPEED = 0.12;
+  cards.forEach(function(c, i){ c.style.transform = 'rotateY(' + (360 / n * i) + 'deg) translateZ(' + radius + 'px)'; });
+  function setRot(){ ring.style.transform = 'translateZ(-' + radius + 'px) rotateY(' + rot + 'deg)'; }
+  setRot();
+  function scheduleResume(){
+    clearTimeout(resumeT);
+    resumeT = setTimeout(function(){ if(!isDrag){ auto = true; } }, 1400);
   }
-  if(navigator.clipboard){
-    navigator.clipboard.writeText(clean).then(confirm).catch(function(){
-      var el=document.createElement('textarea'); el.value=clean;
-      document.body.appendChild(el); el.select(); document.execCommand('copy'); el.remove(); confirm();
-    });
-  } else {
-    var el=document.createElement('textarea'); el.value=clean;
-    document.body.appendChild(el); el.select(); document.execCommand('copy'); el.remove(); confirm();
+  function inertia(){
+    if(isDrag) return;
+    rot += vel; vel *= 0.94; setRot();
+    if(Math.abs(vel) > 0.05) rafId = requestAnimationFrame(inertia);
+    else scheduleResume();
   }
-}
-
-/* ══════════════════════════════════════
-   WHEEL — Rueda de la Fortuna
-══════════════════════════════════════ */
-var prefersReduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-(function initWheel(){
-  var wheel = document.getElementById('wheel');
-  if(!wheel) return;
-  var wheelItems = wheel.querySelectorAll('.wheel-item-inner');
-
-  if(!prefersReduced){
-    gsap.fromTo('.wheel-item',
-      {opacity:0, scale:.4},
-      {opacity:1, scale:1, duration:1.2, stagger:.08, ease:'back.out(1.3)',
-       scrollTrigger:{trigger:'.wheel-stage', start:'top 78%'}});
-    gsap.fromTo('.wheel-hub',
-      {opacity:0, scale:.3, rotate:-60},
-      {opacity:1, scale:1, rotate:0, duration:1.4, ease:'back.out(1.6)',
-       scrollTrigger:{trigger:'.wheel-stage', start:'top 78%'}});
-    /* ── Spark spawner ── */
-    var sparkLayer  = document.getElementById('wheel-spark-layer');
-    var stageEl     = document.querySelector('.wheel-stage');
-    var lastSparkMs = 0;
-    var GOLD_COLORS = ['#B87333','#F7E7CE','#FFFFFF','#F7E7CE'];
-    var STAR_PATH   = 'polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%)';
-
-    function spawnWheelSparks(scrollVel){
-      var now  = performance.now();
-      var absV = Math.abs(scrollVel);
-      var gap  = Math.max(16, 90 - absV * 0.06);
-      if(now - lastSparkMs < gap) return;
-      lastSparkMs = now;
-
-      var sw   = stageEl.offsetWidth;
-      var sh   = stageEl.offsetHeight;
-      var cx   = sw / 2;
-      var cy   = sh / 2;
-      var r    = Math.min(390, window.innerWidth * 0.43);
-      var cnt  = Math.min(8, 2 + Math.floor(absV / 200));
-
-      for(var k = 0; k < cnt; k++){
-        (function(){
-          var angle    = Math.random() * Math.PI * 2;
-          var rOff     = (Math.random() - 0.5) * 60;
-          var sx       = cx + Math.cos(angle) * (r + rOff);
-          var sy       = cy + Math.sin(angle) * (r + rOff);
-          var isStar   = Math.random() > 0.38;
-          var size     = isStar ? (16 + Math.random() * 14) : (8 + Math.random() * 8);
-          var el       = document.createElement('div');
-          el.className = 'wheel-spark';
-          el.style.cssText = [
-            'width:'  + size + 'px',
-            'height:' + size + 'px',
-            'left:'   + (sx - size/2) + 'px',
-            'top:'    + (sy - size/2) + 'px',
-            'background:' + GOLD_COLORS[Math.floor(Math.random()*GOLD_COLORS.length)],
-            isStar ? 'clip-path:' + STAR_PATH + ';border-radius:0' : 'border-radius:50%'
-          ].join(';');
-          sparkLayer.appendChild(el);
-
-          var outA  = Math.atan2(sy - cy, sx - cx);
-          var dist  = 55 + Math.random() * 90;
-          var flyX  = Math.cos(outA) * dist;
-          var flyY  = Math.sin(outA) * dist - (15 + Math.random() * 35);
-
-          gsap.fromTo(el,
-            {opacity:1, scale:1, x:0, y:0, rotate:Math.random()*360},
-            {opacity:0, scale:0.2,
-             x:flyX, y:flyY,
-             rotate:'+='+(Math.random()*500-250),
-             duration:0.55+Math.random()*0.5,
-             ease:'power1.out',
-             onComplete:function(){ if(el.parentNode) el.parentNode.removeChild(el); }
-            });
-        })();
-      }
+  function down(x, t){
+    auto = false; clearTimeout(resumeT); isDrag = true; ring.classList.add('dragging');
+    startX = lastX = x; startRot = rot; vel = 0; totalMove = 0; downTarget = t;
+    if(rafId) cancelAnimationFrame(rafId);
+  }
+  function move(x){
+    if(!isDrag) return;
+    var dx = x - startX; totalMove = Math.max(totalMove, Math.abs(dx));
+    rot = startRot + dx * 0.4; vel = (x - lastX) * 0.5; lastX = x; setRot();
+  }
+  function up(){
+    if(!isDrag) return;
+    isDrag = false; ring.classList.remove('dragging');
+    if(totalMove < 12 && downTarget){
+      var card = downTarget.closest && downTarget.closest('.wheel-card');
+      if(card && window.__openLightbox){ window.__openLightbox(card.dataset.src); scheduleResume(); return; }
     }
-
-    var wheelTL = gsap.timeline({
-      scrollTrigger:{
-        trigger:'.wheel-stage', start:'top bottom', end:'bottom top', scrub:1.2,
-        onUpdate:function(){
-          var v = ScrollTrigger.getVelocity();
-          if(Math.abs(v) > 20) spawnWheelSparks(v);
-        }
-      }
-    });
-    wheelTL.to(wheel, {rotation:360, ease:'none'}, 0);
-    wheelTL.to(wheelItems, {rotation:-360, ease:'none'}, 0);
+    rafId = requestAnimationFrame(inertia);
   }
+  ring.addEventListener('mousedown', function(e){ e.preventDefault(); down(e.clientX, e.target); });
+  window.addEventListener('mousemove', function(e){ move(e.clientX); });
+  window.addEventListener('mouseup', up);
+  ring.addEventListener('touchstart', function(e){ down(e.touches[0].clientX, e.target); }, {passive:true});
+  ring.addEventListener('touchmove', function(e){ if(isDrag){ e.preventDefault(); move(e.touches[0].clientX); } }, {passive:false});
+  ring.addEventListener('touchend', up);
+  ring.addEventListener('touchcancel', up);
+  (function spin(){
+    if(auto && !isDrag && !prefersReducedMotion){ rot += AUTO_SPEED; setRot(); }
+    requestAnimationFrame(spin);
+  })();
+})();
 
-  gsap.fromTo('.gallery-head > *',
-    {opacity:0, y:18},
-    {opacity:1, y:0, duration:1, stagger:.1,
-     scrollTrigger:{trigger:'.gallery-head', start:'top 80%'}});
+/* ── Lightbox ── */
+(function(){
+  var cards = document.querySelectorAll('.wheel-card[data-src]');
+  var srcs = Array.prototype.map.call(cards, function(c){ return c.dataset.src; });
+  var lb = document.getElementById('lightbox'), img = document.getElementById('lb-img'), idx = 0;
+  if(!lb) return;
+  if(lb.parentNode !== document.body) document.body.appendChild(lb);
+  function open(src){ idx = Math.max(0, srcs.indexOf(src)); img.src = srcs[idx]; lb.hidden = false;
+    requestAnimationFrame(function(){ lb.classList.add('open'); }); document.body.style.overflow = 'hidden'; }
+  function close(){ lb.classList.remove('open'); document.body.style.overflow = '';
+    setTimeout(function(){ lb.hidden = true; img.removeAttribute('src'); }, 300); }
+  function go(d){ idx = (idx + d + srcs.length) % srcs.length; img.src = srcs[idx]; }
+  window.__openLightbox = open;
+  document.getElementById('lb-close').addEventListener('click', close);
+  document.getElementById('lb-prev').addEventListener('click', function(e){ e.stopPropagation(); go(-1); });
+  document.getElementById('lb-next').addEventListener('click', function(e){ e.stopPropagation(); go(1); });
+  lb.addEventListener('click', function(e){ if(e.target === lb || e.target === img) close(); });
+  document.addEventListener('keydown', function(e){
+    if(lb.hidden) return;
+    if(e.key === 'Escape') close(); else if(e.key === 'ArrowLeft') go(-1); else if(e.key === 'ArrowRight') go(1);
+  });
+  var x0 = null;
+  lb.addEventListener('touchstart', function(e){ x0 = e.touches[0].clientX; }, {passive:true});
+  lb.addEventListener('touchend', function(e){ if(x0 === null) return; var dx = e.changedTouches[0].clientX - x0; x0 = null; if(Math.abs(dx) > 45) go(dx < 0 ? 1 : -1); }, {passive:true});
 })();
 
 /* ══════════════════════════════════════
-   LIGHTBOX
+   DRESS CODE — visor de ideas (cada dibujo en su marco)
 ══════════════════════════════════════ */
-(function initLightbox(){
-  var lb     = document.getElementById('lightbox');
-  var lbImg  = document.getElementById('lightbox-img');
-  var lbCls  = document.getElementById('lightbox-close');
-  if(!lb || !lbImg) return;
-  var open = false;
-
-  function openLightbox(src, alt){
-    if(open) return; open = true;
-    lbImg.src = src; lbImg.alt = alt || '';
-    lb.classList.add('is-open'); lb.setAttribute('aria-hidden','false');
-    document.body.style.overflow = 'hidden';
-    gsap.to(lb,    {opacity:1, duration:.38, ease:'power2.out'});
-    gsap.to(lbImg, {opacity:1, scale:1, duration:.55, ease:'power3.out', delay:.05});
+(function(){
+  var viewer = document.getElementById('dcViewer');
+  if(!viewer) return;
+  if(viewer.parentNode !== document.body) document.body.appendChild(viewer);
+  var track = document.getElementById('dcvTrack'), head = document.getElementById('dcvHead'),
+      cap = document.getElementById('dcvCap'), dots = document.getElementById('dcvDots'),
+      close = document.getElementById('dcViewerClose');
+  var LOOKS = {
+    caballeros:{head:'Caballeros', items:[
+      {src:'looks/cab-1.png', cap:'Chaleco y pantalón de vestir'},
+      {src:'looks/cab-2.png', cap:'Traje en tono arena'},
+      {src:'looks/cab-3.png', cap:'Traje oscuro'}]},
+    damas:{head:'Damas', items:[
+      {src:'looks/dama-1.png', cap:'Vestido largo claro'},
+      {src:'looks/dama-2.png', cap:'Vestido marino'},
+      {src:'looks/dama-3.png', cap:'Vestido champagne'}]}
+  };
+  var items = [], idx = 0, last = null;
+  function render(){
+    track.style.transform = 'translateX(' + (-idx * 100) + '%)';
+    cap.textContent = items[idx].cap + '  ·  ' + (idx + 1) + ' / ' + items.length;
+    [].forEach.call(dots.children, function(d, i){ d.classList.toggle('on', i === idx); });
   }
-  function closeLightbox(){
-    if(!open) return; open = false;
-    gsap.to(lbImg, {opacity:0, scale:.88, duration:.32, ease:'power2.in'});
-    gsap.to(lb, {opacity:0, duration:.35, ease:'power2.in', delay:.05,
-      onComplete:function(){
-        lb.classList.remove('is-open'); lb.setAttribute('aria-hidden','true');
-        document.body.style.overflow = ''; lbImg.removeAttribute('src');
-      }});
+  function go(i){ idx = (i + items.length) % items.length; render(); }
+  function open(key){
+    var L = LOOKS[key]; if(!L) return;
+    items = L.items; idx = 0; last = document.activeElement;
+    head.textContent = L.head; track.innerHTML = ''; dots.innerHTML = '';
+    items.forEach(function(it, i){
+      var sl = document.createElement('figure'); sl.className = 'dcv-slide';
+      sl.innerHTML = '<div class="dcv-frame"><div class="dcv-mat"><img alt=""></div></div>';
+      var im = sl.querySelector('img'); im.src = it.src; im.alt = L.head + ' — ' + it.cap;
+      track.appendChild(sl);
+      var d = document.createElement('button'); d.type = 'button'; d.className = 'dcv-dot';
+      d.setAttribute('aria-label', 'Ver idea ' + (i + 1));
+      d.addEventListener('click', function(){ go(i); }); dots.appendChild(d);
+    });
+    render();
+    viewer.removeAttribute('hidden');
+    requestAnimationFrame(function(){ viewer.classList.add('on'); });
+    document.body.style.overflow = 'hidden'; close.focus();
   }
+  function hide(){
+    viewer.classList.remove('on'); document.body.style.overflow = '';
+    setTimeout(function(){ viewer.setAttribute('hidden', ''); }, 300);
+    if(last && last.focus) last.focus();
+  }
+  document.querySelectorAll('.dc-look').forEach(function(b){
+    b.addEventListener('click', function(e){ e.preventDefault(); open(b.dataset.look); });
+  });
+  close.addEventListener('click', hide);
+  document.getElementById('dcvPrev').addEventListener('click', function(e){ e.stopPropagation(); go(idx - 1); });
+  document.getElementById('dcvNext').addEventListener('click', function(e){ e.stopPropagation(); go(idx + 1); });
+  viewer.addEventListener('click', function(e){ if(e.target === viewer) hide(); });
+  document.addEventListener('keydown', function(e){
+    if(!viewer.classList.contains('on')) return;
+    if(e.key === 'Escape') hide(); if(e.key === 'ArrowLeft') go(idx - 1); if(e.key === 'ArrowRight') go(idx + 1);
+  });
+  var x0 = null;
+  track.addEventListener('touchstart', function(e){ x0 = e.touches[0].clientX; }, {passive:true});
+  track.addEventListener('touchend', function(e){
+    if(x0 === null) return; var dx = e.changedTouches[0].clientX - x0; x0 = null;
+    if(Math.abs(dx) > 40) go(idx + (dx < 0 ? 1 : -1));
+  }, {passive:true});
+})();
 
-  document.querySelectorAll('.wheel-item-inner').forEach(function(el){
-    var img = el.querySelector('img'); if(!img) return;
-    el.addEventListener('click', function(e){
-      e.preventDefault(); e.stopPropagation();
-      openLightbox(img.currentSrc || img.src, img.alt);
+/* ══════════════════════════════════════
+   MESA DE REGALOS — caja + confeti + carrusel BBVA (paola-e-ivan)
+══════════════════════════════════════ */
+(function(){
+  var box = document.getElementById('giftbox'), cta = document.getElementById('giftbox-cta'),
+      reveal = document.getElementById('gift-backdrop'), closeB = document.getElementById('gift-close'),
+      track = document.getElementById('gr-track'), viewp = document.getElementById('gr-viewport'),
+      dotsEl = document.getElementById('gr-dots'), canvas = document.getElementById('confetti-canvas');
+  if(!box || !reveal || !track) return;
+  var slides = track.querySelectorAll('.gr-slide'), total = slides.length, idx = 0;
+  for(var i = 0; i < total; i++){
+    (function(n){
+      var d = document.createElement('button'); d.type = 'button';
+      d.className = 'gr-dot' + (n === 0 ? ' is-active' : '');
+      d.setAttribute('aria-label', 'Opción ' + (n + 1) + ' de ' + total);
+      d.addEventListener('click', function(){ goTo(n); }); dotsEl.appendChild(d);
+    })(i);
+  }
+  var dots = dotsEl.querySelectorAll('.gr-dot'), prevBtn = document.getElementById('gr-prev'), nextBtn = document.getElementById('gr-next');
+  function syncUI(){
+    for(var k = 0; k < dots.length; k++) dots[k].classList.toggle('is-active', k === idx);
+    for(var m = 0; m < slides.length; m++) slides[m].setAttribute('aria-hidden', m === idx ? 'false' : 'true');
+    prevBtn.disabled = (idx === 0); nextBtn.disabled = (idx === total - 1);
+  }
+  function goTo(n, behavior){
+    idx = Math.max(0, Math.min(total - 1, n));
+    var target = idx * viewp.clientWidth;
+    try{ viewp.scrollTo({left:target, behavior:behavior || 'smooth'}); }catch(e){ viewp.scrollLeft = target; }
+    setTimeout(function(){ if(Math.abs(viewp.scrollLeft - target) > 4) viewp.scrollLeft = target; }, 420);
+    syncUI();
+  }
+  prevBtn.addEventListener('click', function(){ goTo(idx - 1); });
+  nextBtn.addEventListener('click', function(){ goTo(idx + 1); });
+  function syncFromScroll(){
+    var n = Math.max(0, Math.min(total - 1, Math.round(viewp.scrollLeft / Math.max(1, viewp.clientWidth))));
+    if(n !== idx){ idx = n; syncUI(); }
+  }
+  var st = null;
+  viewp.addEventListener('scroll', function(){ clearTimeout(st); st = setTimeout(syncFromScroll, 90); }, {passive:true});
+  viewp.addEventListener('touchend', function(){ setTimeout(syncFromScroll, 160); setTimeout(syncFromScroll, 520); }, {passive:true});
+  var mDown = false, mStartX = 0, mStartScroll = 0;
+  viewp.addEventListener('mousedown', function(e){ if(e.target.closest('a,button')) return; mDown = true; mStartX = e.clientX; mStartScroll = viewp.scrollLeft; });
+  window.addEventListener('mousemove', function(e){ if(mDown) viewp.scrollLeft = mStartScroll - (e.clientX - mStartX); });
+  window.addEventListener('mouseup', function(){ if(!mDown) return; mDown = false; goTo(Math.round(viewp.scrollLeft / Math.max(1, viewp.clientWidth))); });
+
+  /* copiar cuenta */
+  document.querySelectorAll('.copy-clabe').forEach(function(b){
+    b.addEventListener('click', function(){
+      var v = b.getAttribute('data-clabe'), msg = b.closest('.gr-slide').querySelector('.gr-copied');
+      function ok(){ b.classList.add('is-copied'); msg.textContent = '¡Copiado!'; msg.classList.add('on');
+        setTimeout(function(){ b.classList.remove('is-copied'); msg.classList.remove('on'); }, 2200); }
+      if(navigator.clipboard && window.isSecureContext){ navigator.clipboard.writeText(v).then(ok, fallback); } else fallback();
+      function fallback(){ var t = document.createElement('textarea'); t.value = v; t.setAttribute('readonly', '');
+        t.style.cssText = 'position:fixed;top:0;left:0;opacity:0;'; document.body.appendChild(t); t.select();
+        try{ document.execCommand('copy'); }catch(e){} t.remove(); ok(); }
     });
   });
-  lb.addEventListener('click', function(e){ if(e.target === lb) closeLightbox(); });
-  lbCls.addEventListener('click', closeLightbox);
-  document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && open) closeLightbox(); });
+
+  function burst(){
+    if(!canvas || !canvas.getContext) return;
+    var ctx = canvas.getContext('2d'), dpr = Math.min(window.devicePixelRatio || 1, 2), stage = canvas.parentElement;
+    var W = stage.offsetWidth, H = stage.offsetHeight;
+    canvas.width = W * dpr; canvas.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    var colors = ['#B87333','#F7E7CE','#7A4A1E','#B6CFA5','#55704A','#FFFFFF','#D19A66'], parts = [];
+    var cx = W / 2, cy = H / 2, n = window.innerWidth < 520 ? 70 : 120;
+    for(var i = 0; i < n; i++){
+      var a = (Math.PI * 2 * i / n) + (i % 7) * 0.11, sp = 3.4 + (i % 11) * 0.62;
+      parts.push({x:cx, y:cy, vx:Math.cos(a) * sp * (0.6 + (i % 5) * 0.14), vy:Math.sin(a) * sp * (0.6 + (i % 3) * 0.2) - 3.6,
+        w:5 + (i % 4) * 2.4, h:3 + (i % 3) * 2, rot:(i % 360) * 0.0175, vr:(i % 2 ? 1 : -1) * (0.06 + (i % 5) * 0.02), c:colors[i % colors.length]});
+    }
+    var t0 = null;
+    function frame(ts){
+      if(t0 === null) t0 = ts;
+      var life = Math.max(0, 1 - (ts - t0) / 2600), alive = false;
+      ctx.clearRect(0, 0, W, H);
+      parts.forEach(function(p){
+        p.vy += 0.14; p.vx *= 0.992; p.x += p.vx; p.y += p.vy; p.rot += p.vr;
+        if(life > 0 && p.y < H + 40){ alive = true; ctx.save(); ctx.globalAlpha = life; ctx.translate(p.x, p.y); ctx.rotate(p.rot);
+          ctx.fillStyle = p.c; ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h); ctx.restore(); }
+      });
+      if(alive) requestAnimationFrame(frame); else ctx.clearRect(0, 0, W, H);
+    }
+    requestAnimationFrame(frame);
+  }
+
+  if(reveal.parentElement !== document.body) document.body.appendChild(reveal);
+  var isOpen = false, savedY = 0;
+  function lock(){ savedY = window.pageYOffset || 0; var b = document.body.style;
+    b.position = 'fixed'; b.top = (-savedY) + 'px'; b.left = '0'; b.right = '0'; b.width = '100%'; document.body.classList.add('gift-locked'); }
+  function unlock(){ document.body.classList.remove('gift-locked'); var b = document.body.style;
+    b.position = ''; b.top = ''; b.left = ''; b.right = ''; b.width = ''; window.scrollTo(0, savedY); }
+  function openGift(){
+    if(isOpen) return; isOpen = true;
+    box.classList.add('is-open'); box.setAttribute('aria-expanded', 'true'); cta.classList.add('is-hidden'); burst();
+    setTimeout(function(){ reveal.classList.add('is-open'); lock(); requestAnimationFrame(function(){ goTo(0, 'auto'); }); }, 240);
+  }
+  function closeGift(){
+    if(!isOpen) return; isOpen = false;
+    reveal.classList.remove('is-open'); unlock();
+    setTimeout(function(){ box.classList.remove('is-open'); box.setAttribute('aria-expanded', 'false'); cta.classList.remove('is-hidden'); }, 420);
+  }
+  box.addEventListener('click', openGift);
+  closeB.addEventListener('click', closeGift);
+  reveal.addEventListener('click', function(e){ if(e.target === reveal) closeGift(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && isOpen) closeGift(); });
+})();
+
+/* ══════════════════════════════════════
+   MESA FÍSICA — etiqueta que se voltea con destello
+══════════════════════════════════════ */
+(function(){
+  var tag = document.getElementById('giftTag'), swing = document.getElementById('tagSwing'), burstEl = document.getElementById('tagBurst');
+  if(!tag) return;
+  function sparkle(){
+    var cols = ['#B87333','#F7E7CE','#B6CFA5','#D19A66','#55704A'];
+    for(var i = 0; i < 16; i++){
+      var d = document.createElement('i'); d.style.background = cols[i % cols.length]; burstEl.appendChild(d);
+      var a = Math.PI * 2 * i / 16, r = 90 + Math.random() * 70;
+      gsap.fromTo(d, {x:0, y:0, opacity:1, scale:1},
+        {x:Math.cos(a) * r, y:Math.sin(a) * r * .7 - 20, opacity:0, scale:.3, duration:.9 + Math.random() * .4, ease:'power2.out',
+         onComplete:function(){ this.targets()[0].remove(); }});
+    }
+  }
+  tag.addEventListener('click', function(){
+    var on = !tag.classList.contains('is-flipped');
+    tag.classList.toggle('is-flipped', on); swing.classList.toggle('is-flipped', on);
+    tag.setAttribute('aria-pressed', on ? 'true' : 'false');
+    if(on) sparkle();
+  });
+  /* al entrar en pantalla da un pequeño "tirón" para invitar a tocar */
+  if(window.IntersectionObserver){
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ gsap.fromTo(swing, {rotation:-14}, {rotation:0, duration:1.6, ease:'elastic.out(1,.35)',
+        onComplete:function(){ gsap.set(swing, {clearProps:'transform'}); }}); io.disconnect(); } });
+    }, {threshold:.6});
+    io.observe(tag);
+  }
 })();
 
 /* ══════════════════════════════════════
