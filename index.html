@@ -1741,7 +1741,7 @@ function initDressCode(){
     });
     render();
     viewer.removeAttribute('hidden');
-    requestAnimationFrame(function(){ viewer.classList.add('on'); });
+    viewer.classList.add('on');
     document.body.style.overflow = 'hidden'; close.focus();
   }
   function hide(){
