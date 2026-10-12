@@ -34,10 +34,10 @@ body{
   --text:#2F3326;
   --surface:#E7EBDE;
   --card:#FFFFFF;
-  --gold:#9A5C26;
+  --gold:#646D4A;
   --gold-light:#F7E7CE;
   --sage:#ABB495;
-  --copper:#B87333;
+  --copper:#ABB495;
 }
 .wrap{max-width:430px;margin:0 auto;background:var(--bg);position:relative;overflow:clip;z-index:1;}
 
@@ -83,7 +83,7 @@ body{
 }
 .hero-badge{
   display:inline-flex;align-items:center;gap:12px;padding:8px 24px;
-  border:1px solid rgba(184,115,51,.5);border-radius:30px;
+  border:1px solid rgba(171,180,149,.5);border-radius:30px;
   background:rgba(56,62,42,.4);backdrop-filter:blur(4px);
   transform:translateY(16px);opacity:0;
 }
@@ -119,8 +119,8 @@ body{
 @keyframes orn-flow  {to{stroke-dashoffset:-22;}}
 @keyframes orn-flow-r{to{stroke-dashoffset:22;}}
 @keyframes orn-glow{
-  0%,100%{filter:drop-shadow(0 0 1px rgba(184,115,51,.35));}
-  50%    {filter:drop-shadow(0 0 9px rgba(247,231,206,.95)) drop-shadow(0 0 3px rgba(184,115,51,.6));}
+  0%,100%{filter:drop-shadow(0 0 1px rgba(171,180,149,.35));}
+  50%    {filter:drop-shadow(0 0 9px rgba(247,231,206,.95)) drop-shadow(0 0 3px rgba(171,180,149,.6));}
 }
 @media(prefers-reduced-motion:reduce){
   .orn svg polygon,.orn svg path{animation:none;}
@@ -179,9 +179,9 @@ section{padding:60px 26px;}
   top:0;bottom:0;width:1px;z-index:0;
   background:linear-gradient(to bottom,
     transparent 0%,
-    rgba(184,115,51,0.35) 10%,
+    rgba(171,180,149,0.35) 10%,
     rgba(99,107,77,0.25) 45%,
-    rgba(184,115,51,0.30) 80%,
+    rgba(171,180,149,0.30) 80%,
     transparent 100%);
 }
 .itv3-glow{
@@ -189,9 +189,9 @@ section{padding:60px 26px;}
   top:0;width:5px;height:110px;
   background:linear-gradient(to bottom,
     transparent,
-    rgba(184,115,51,0.55) 20%,
-    rgba(184,115,51,0.90) 50%,
-    rgba(184,115,51,0.55) 80%,
+    rgba(171,180,149,0.55) 20%,
+    rgba(171,180,149,0.90) 50%,
+    rgba(171,180,149,0.55) 80%,
     transparent);
   filter:blur(3px);border-radius:6px;
   z-index:1;pointer-events:none;
@@ -203,9 +203,9 @@ section{padding:60px 26px;}
 }
 .itv3-gem{
   width:9px;height:9px;
-  background:linear-gradient(135deg,#F7E7CE 30%,#7A4A1E);
+  background:linear-gradient(135deg,#F7E7CE 30%,#545C3E);
   transform:rotate(45deg);border-radius:2px;
-  box-shadow:0 0 0 4px rgba(184,115,51,0.12),0 0 18px rgba(184,115,51,0.45);
+  box-shadow:0 0 0 4px rgba(171,180,149,0.12),0 0 18px rgba(171,180,149,0.45);
   margin-bottom:18px;flex-shrink:0;
 }
 .itv3-gem-navy{
@@ -213,8 +213,8 @@ section{padding:60px 26px;}
   box-shadow:0 0 0 4px rgba(99,107,77,0.14),0 0 18px rgba(99,107,77,0.45);
 }
 .itv3-gem-mid{
-  background:linear-gradient(135deg,#D9B48A 30%,#6E3F17);
-  box-shadow:0 0 0 4px rgba(184,115,51,0.10),0 0 18px rgba(184,115,51,0.38);
+  background:linear-gradient(135deg,#C3CAB0 30%,#4A5236);
+  box-shadow:0 0 0 4px rgba(171,180,149,0.10),0 0 18px rgba(171,180,149,0.38);
 }
 .itv3-time{
   font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;
@@ -257,12 +257,12 @@ section{padding:60px 26px;}
 #sdc{position:relative;overflow:hidden;}
 .dc-star-layer,.dc-glow-layer{position:absolute;inset:0;pointer-events:none;z-index:0;}
 .dc-glow-layer{
-  background:radial-gradient(ellipse 80% 55% at 50% 50%,rgba(184,115,51,0) 0%,transparent 100%);
+  background:radial-gradient(ellipse 80% 55% at 50% 50%,rgba(171,180,149,0) 0%,transparent 100%);
   animation:dcGlow 4.2s ease-in-out infinite;
 }
 @keyframes dcGlow{
-  0%,100%{background:radial-gradient(ellipse 80% 55% at 50% 50%,rgba(184,115,51,.0) 0%,transparent 100%);}
-  50%{background:radial-gradient(ellipse 80% 55% at 50% 50%,rgba(184,115,51,.11) 0%,rgba(247,231,206,.04) 60%,transparent 100%);}
+  0%,100%{background:radial-gradient(ellipse 80% 55% at 50% 50%,rgba(171,180,149,.0) 0%,transparent 100%);}
+  50%{background:radial-gradient(ellipse 80% 55% at 50% 50%,rgba(171,180,149,.11) 0%,rgba(247,231,206,.04) 60%,transparent 100%);}
 }
 .dc-sparkle{
   position:absolute;pointer-events:none;will-change:transform,opacity;
@@ -288,7 +288,7 @@ section{padding:60px 26px;}
 .wheel-ring{position:absolute;width:100%;height:100%;transform-style:preserve-3d;cursor:grab;touch-action:pan-y;}
 .wheel-ring.dragging{cursor:grabbing;}
 .wheel-card{position:absolute;width:190px;height:265px;left:50%;top:50%;margin-left:-95px;margin-top:-132px;
-  border-radius:18px;overflow:hidden;border:2px solid rgba(184,115,51,.38);box-shadow:0 12px 40px rgba(56,62,42,.25);
+  border-radius:18px;overflow:hidden;border:2px solid rgba(171,180,149,.38);box-shadow:0 12px 40px rgba(56,62,42,.25);
   user-select:none;-webkit-user-select:none;backface-visibility:hidden;-webkit-backface-visibility:hidden;cursor:pointer;}
 .wheel-card img{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;}
 .gal-hint{text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:16px;color:var(--gold);margin-top:6px;padding:0 20px;}
@@ -307,11 +307,11 @@ section{padding:60px 26px;}
 /* ════════ DRESS CODE — botones "Ver ideas" + visor con marco (fabiola-y-fernando) ════════ */
 .dc-looks{display:flex;flex-direction:column;gap:12px;max-width:380px;margin:8px auto 30px;position:relative;z-index:1;}
 .dc-look{display:flex;align-items:center;gap:14px;width:100%;padding:14px 16px;cursor:pointer;border-radius:14px;text-align:left;
-  border:1px solid rgba(184,115,51,.38);background:linear-gradient(120deg,#FFFFFF 0%,var(--surface) 100%);
+  border:1px solid rgba(171,180,149,.38);background:linear-gradient(120deg,#FFFFFF 0%,var(--surface) 100%);
   box-shadow:0 10px 24px rgba(56,62,42,.12);transition:transform .22s cubic-bezier(.34,1.56,.64,1),border-color .22s;
   animation:dcLookBreathe 3.4s ease-in-out infinite;-webkit-tap-highlight-color:transparent;font:inherit;}
 .dc-looks .dc-look:nth-child(2){animation-delay:1.7s;}
-@keyframes dcLookBreathe{0%,100%{box-shadow:0 10px 24px rgba(56,62,42,.12),0 0 0 0 rgba(184,115,51,0)}50%{box-shadow:0 10px 24px rgba(56,62,42,.12),0 0 20px 2px rgba(184,115,51,.25)}}
+@keyframes dcLookBreathe{0%,100%{box-shadow:0 10px 24px rgba(56,62,42,.12),0 0 0 0 rgba(171,180,149,0)}50%{box-shadow:0 10px 24px rgba(56,62,42,.12),0 0 20px 2px rgba(171,180,149,.25)}}
 .dc-look:hover,.dc-look:focus-visible{transform:translateY(-3px);border-color:var(--copper);outline:none;}
 .dc-look-ico{flex:0 0 auto;width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;
   background:linear-gradient(140deg,#9EA982,var(--accent) 55%,var(--dark));box-shadow:0 4px 12px rgba(56,62,42,.35),inset 0 1px 0 rgba(255,255,255,.35);}
@@ -326,18 +326,18 @@ section{padding:60px 26px;}
   background:rgba(56,62,42,.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);opacity:0;transition:opacity .28s ease;}
 .dc-viewer[hidden]{display:none;}
 .dc-viewer.on{opacity:1;}
-.dcv-box{position:relative;width:min(92vw,440px);border-radius:20px;overflow:hidden;background:var(--bg);border:1px solid rgba(184,115,51,.5);
+.dcv-box{position:relative;width:min(92vw,440px);border-radius:20px;overflow:hidden;background:var(--bg);border:1px solid rgba(171,180,149,.5);
   box-shadow:0 26px 70px rgba(36,40,27,.45);padding:18px 0 16px;}
 .dcv-head{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:700;font-size:24px;color:var(--gold);text-align:center;margin:0 56px 14px;}
 .dcv-viewport{overflow:hidden;}
 .dcv-track{display:flex;transition:transform .42s cubic-bezier(.25,.8,.25,1);touch-action:pan-y;}
 .dcv-slide{flex:0 0 100%;margin:0;display:flex;justify-content:center;padding:0 40px;}
 .dcv-frame{position:relative;width:100%;max-width:300px;height:min(56vh,440px);padding:14px;border-radius:6px;
-  background:linear-gradient(145deg,#F7E7CE 0%,#B87333 30%,#F7E7CE 52%,#9A5C26 74%,#EBCFA8 100%);
+  background:linear-gradient(145deg,#F7E7CE 0%,#ABB495 30%,#F7E7CE 52%,#646D4A 74%,#D6DBC6 100%);
   box-shadow:0 14px 30px rgba(36,40,27,.28),inset 0 0 0 1px rgba(255,255,255,.55),inset 0 0 0 4px rgba(99,107,77,.2);}
 .dcv-mat{position:relative;height:100%;border-radius:3px;display:flex;align-items:flex-end;justify-content:center;padding:20px 18px 14px;
   background:#FFFFFF;
-  box-shadow:inset 0 0 0 1px rgba(99,107,77,.3),inset 0 0 0 7px #FFFFFF,inset 0 0 0 8px rgba(184,115,51,.5),inset 0 3px 10px rgba(36,40,27,.16);}
+  box-shadow:inset 0 0 0 1px rgba(99,107,77,.3),inset 0 0 0 7px #FFFFFF,inset 0 0 0 8px rgba(171,180,149,.5),inset 0 3px 10px rgba(36,40,27,.16);}
 .dcv-mat img{max-height:100%;max-width:100%;object-fit:contain;display:block;filter:drop-shadow(0 6px 10px rgba(36,40,27,.2));}
 .dcv-frame::before,.dcv-frame::after{content:'';position:absolute;width:18px;height:18px;border:1.5px solid var(--dark);opacity:.5;pointer-events:none;}
 .dcv-frame::before{top:6px;left:6px;border-right:none;border-bottom:none;}
@@ -357,7 +357,7 @@ section{padding:60px 26px;}
 .dc-swatches{display:inline-flex;gap:18px;justify-content:center;margin:16px auto 0;}
 .dc-swatch-dot{width:30px;height:30px;border-radius:50%;display:inline-block;position:relative;box-shadow:0 4px 14px rgba(36,40,27,.18);}
 .dc-swatch-dot::after{content:'';position:absolute;inset:-5px;border-radius:50%;border:1px dashed rgba(56,62,42,.4);}
-.dc-swatch-dot::before{content:'';position:absolute;left:50%;top:-4px;bottom:-4px;width:1.5px;background:#9A5C26;transform:translateX(-50%) rotate(45deg);}
+.dc-swatch-dot::before{content:'';position:absolute;left:50%;top:-4px;bottom:-4px;width:1.5px;background:#646D4A;transform:translateX(-50%) rotate(45deg);}
 @media(prefers-reduced-motion:reduce){.dc-look,.dc-look-arrow{animation:none;}}
 
 /* ════════ MESA DE REGALOS — regalo que se abre + carrusel BBVA (paola-e-ivan) ════════ */
@@ -382,12 +382,12 @@ section{padding:60px 26px;}
 .gift-backdrop.is-open{opacity:1;pointer-events:auto;}
 body.gift-locked{overflow:hidden;overscroll-behavior:none;}
 .gift-reveal{position:relative;width:100%;max-width:440px;max-height:calc(100dvh - 32px);overflow-y:auto;background:rgba(251,247,239,.96);
-  border:1px solid rgba(184,115,51,.5);border-radius:18px;padding:36px 0 26px;box-shadow:0 34px 90px rgba(24,27,18,.45);
+  border:1px solid rgba(171,180,149,.5);border-radius:18px;padding:36px 0 26px;box-shadow:0 34px 90px rgba(24,27,18,.45);
   opacity:0;transform:translateY(26px) scale(.94);transition:opacity .5s ease,transform .55s cubic-bezier(.2,.7,.2,1);}
 .gift-backdrop.is-open .gift-reveal{opacity:1;transform:none;}
-.gift-reveal::before{content:"";position:absolute;inset:9px;border:1px solid rgba(184,115,51,.22);border-radius:12px;pointer-events:none;}
+.gift-reveal::before{content:"";position:absolute;inset:9px;border:1px solid rgba(171,180,149,.22);border-radius:12px;pointer-events:none;}
 .gift-reveal-eyebrow{font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);text-align:center;}
-.gift-close{position:absolute;top:12px;right:12px;z-index:3;width:40px;height:40px;border-radius:50%;border:1px solid rgba(184,115,51,.5);
+.gift-close{position:absolute;top:12px;right:12px;z-index:3;width:40px;height:40px;border-radius:50%;border:1px solid rgba(171,180,149,.5);
   background:#fff;color:var(--dark);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;transition:transform .3s;}
 .gift-close:hover{transform:rotate(90deg);}
 .gift-close svg{width:16px;height:16px;}
@@ -401,30 +401,30 @@ body.gift-locked{overflow:hidden;overscroll-behavior:none;}
 .gr-logo img{height:34px;width:auto;display:block;-webkit-user-drag:none;}
 .gr-title{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:700;font-size:27px;color:var(--dark);margin-bottom:4px;}
 .gr-bankname{font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
-.gr-acc{display:flex;align-items:center;gap:14px;text-align:left;width:100%;max-width:360px;padding:14px 16px;border:1px solid rgba(184,115,51,.38);
+.gr-acc{display:flex;align-items:center;gap:14px;text-align:left;width:100%;max-width:360px;padding:14px 16px;border:1px solid rgba(171,180,149,.38);
   background:rgba(255,255,255,.7);border-radius:10px;}
 .gr-acc-info{flex:1;min-width:0;}
 .gr-acc-n{font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-bottom:3px;}
 .gr-acc-c{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:700;color:var(--dark);font-variant-numeric:tabular-nums;letter-spacing:.04em;word-break:break-all;}
-.gr-acc-btn{flex-shrink:0;width:44px;height:44px;border-radius:50%;border:1px solid rgba(184,115,51,.5);background:transparent;color:var(--gold);
+.gr-acc-btn{flex-shrink:0;width:44px;height:44px;border-radius:50%;border:1px solid rgba(171,180,149,.5);background:transparent;color:var(--gold);
   display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;transition:background .3s,color .3s;touch-action:manipulation;}
 .gr-acc-btn svg{width:17px;height:17px;}
 .gr-acc-btn.is-copied{background:var(--accent);color:#fff;border-color:var(--accent);}
 .gr-copied{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:700;color:var(--accent);height:22px;margin-top:8px;opacity:0;transition:opacity .3s;}
 .gr-copied.on{opacity:1;}
 .gr-nav{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:18px;}
-.gr-arrow{width:40px;height:40px;border-radius:50%;border:1px solid rgba(184,115,51,.5);background:transparent;color:var(--gold);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;}
+.gr-arrow{width:40px;height:40px;border-radius:50%;border:1px solid rgba(171,180,149,.5);background:transparent;color:var(--gold);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;}
 .gr-arrow:disabled{opacity:.3;cursor:default;}
 .gr-arrow svg{width:15px;height:15px;}
 .gr-dots{display:flex;gap:10px;}
-.gr-dot{width:9px;height:9px;border-radius:50%;border:1px solid rgba(184,115,51,.65);background:transparent;padding:0;cursor:pointer;transition:background .3s,transform .3s;}
+.gr-dot{width:9px;height:9px;border-radius:50%;border:1px solid rgba(171,180,149,.65);background:transparent;padding:0;cursor:pointer;transition:background .3s,transform .3s;}
 .gr-dot.is-active{background:var(--copper);transform:scale(1.35);}
 .gr-hint{font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--text);opacity:.75;margin-top:12px;text-align:center;}
 
 /* ════════ MESA FÍSICA — etiqueta colgante que se balancea y se voltea (nuevo) ════════ */
 .tag-stage{position:relative;margin:34px auto 0;display:flex;flex-direction:column;align-items:center;}
-.tag-string{width:2px;height:46px;background:linear-gradient(to bottom,rgba(184,115,51,0),#B87333);}
-.tag-knot{width:16px;height:16px;border-radius:50%;margin-top:-4px;background:radial-gradient(circle at 35% 30%,#F7E7CE,#B87333 55%,#7A4A1E);
+.tag-string{width:2px;height:46px;background:linear-gradient(to bottom,rgba(171,180,149,0),#ABB495);}
+.tag-knot{width:16px;height:16px;border-radius:50%;margin-top:-4px;background:radial-gradient(circle at 35% 30%,#F7E7CE,#ABB495 55%,#545C3E);
   box-shadow:0 2px 6px rgba(36,40,27,.3);z-index:2;}
 .tag-swing{transform-origin:50% -54px;animation:tagSwing 4.2s ease-in-out infinite;margin-top:-8px;}
 .tag-swing.is-flipped{animation-play-state:paused;}
@@ -438,16 +438,16 @@ body.gift-locked{overflow:hidden;overscroll-behavior:none;}
   display:flex;flex-direction:column;align-items:center;justify-content:center;padding:26px 22px 18px;text-align:center;
   clip-path:polygon(14% 0,86% 0,100% 16%,100% 100%,0 100%,0 16%);}
 .tag-front{background:linear-gradient(150deg,#D0D7BD 0%,#ABB495 45%,#ABB690 100%);
-  box-shadow:inset 0 0 0 2px rgba(255,255,255,.45),inset 0 0 0 8px rgba(184,115,51,.0);}
+  box-shadow:inset 0 0 0 2px rgba(255,255,255,.45),inset 0 0 0 8px rgba(171,180,149,.0);}
 .tag-back{transform:rotateY(180deg);background:linear-gradient(150deg,#FFFDF8 0%,#F7E7CE 100%);}
-.tag-face::before{content:'';position:absolute;inset:9px;border:1.5px dashed rgba(122,74,30,.55);border-radius:10px;
+.tag-face::before{content:'';position:absolute;inset:9px;border:1.5px dashed rgba(84,92,62,.55);border-radius:10px;
   clip-path:polygon(13% 0,87% 0,100% 15%,100% 100%,0 100%,0 15%);}
 .tag-hole{position:absolute;top:12px;left:50%;width:14px;height:14px;margin-left:-7px;border-radius:50%;background:var(--bg);
-  box-shadow:inset 0 1px 3px rgba(36,40,27,.4),0 0 0 3px #B87333;}
+  box-shadow:inset 0 1px 3px rgba(36,40,27,.4),0 0 0 3px #ABB495;}
 .tag-ico{width:44px;height:44px;color:var(--dark);margin-top:8px;}
 .tag-k{font-family:'Cormorant Garamond',serif;font-size:13px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--dark);margin-top:6px;}
 .tag-t{font-family:'Great Vibes',cursive;font-size:34px;line-height:1.05;color:var(--dark);}
-.tag-cta{font-family:'Cormorant Garamond',serif;font-size:13px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:#7A4A1E;margin-top:6px;
+.tag-cta{font-family:'Cormorant Garamond',serif;font-size:13px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:#545C3E;margin-top:6px;
   animation:giftPulse 2.4s ease-in-out infinite;}
 .tag-back .tag-t{font-size:30px;color:var(--gold);margin-top:10px;}
 .tag-p{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;line-height:1.45;color:var(--dark);margin-top:6px;}
@@ -482,7 +482,7 @@ body.gift-locked{overflow:hidden;overscroll-behavior:none;}
   background:var(--surface);color:var(--dark);border-radius:20px;
   font-family:'Cormorant Garamond',serif;font-size:11px;
   text-transform:uppercase;letter-spacing:2px;
-  border:1px solid rgba(184,115,51,.35);cursor:pointer;
+  border:1px solid rgba(171,180,149,.35);cursor:pointer;
   transition:background .25s,color .25s;
 }
 .btn-copy:hover{background:var(--gold);color:#fff;border-color:transparent;}
@@ -503,7 +503,7 @@ body.gift-locked{overflow:hidden;overscroll-behavior:none;}
   display:none;margin:0 auto 32px;padding:22px 24px 18px;
   max-width:310px;background:var(--card);border-radius:18px;
   text-align:center;box-shadow:0 4px 28px rgba(56,62,42,.09);
-  border:1px solid rgba(184,115,51,.28);
+  border:1px solid rgba(171,180,149,.28);
 }
 #invitado-card.visible{display:block;}
 .inv-label{
@@ -574,7 +574,7 @@ body.gift-locked{overflow:hidden;overscroll-behavior:none;}
   background:#f7f6f3;font-family:'Cormorant Garamond',serif;font-size:14px;
   color:var(--text);outline:none;cursor:pointer;
   appearance:none;-webkit-appearance:none;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23B87333' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23646D4A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
   background-repeat:no-repeat;background-position:right 14px center;
   transition:border-color .3s;
 }
@@ -595,14 +595,14 @@ body.gift-locked{overflow:hidden;overscroll-behavior:none;}
   padding:18px;border-radius:20px;
   background:var(--card);
   box-shadow:0 6px 36px rgba(56,62,42,.1);
-  border:1.5px solid rgba(184,115,51,.28);
+  border:1.5px solid rgba(171,180,149,.28);
 }
 .album-qr-frame img{display:block;border-radius:10px;}
 .album-hashtag{
   text-align:center;
   font-family:'Great Vibes',cursive;font-size:40px;
   color:var(--gold);
-  filter:drop-shadow(0 0 10px rgba(184,115,51,.4));
+  filter:drop-shadow(0 0 10px rgba(171,180,149,.4));
   margin-top:4px;
 }
 /* ── FOOTER ── */
@@ -624,7 +624,7 @@ footer .fc a{color:inherit;text-decoration:none;}
 /* pulsing ring when playing */
 .vinyl-btn::before{
   content:'';position:absolute;inset:-7px;border-radius:50%;
-  border:1.5px solid rgba(184,115,51,.55);
+  border:1.5px solid rgba(171,180,149,.55);
   opacity:0;pointer-events:none;
   transition:opacity .35s;
 }
@@ -633,9 +633,9 @@ footer .fc a{color:inherit;text-decoration:none;}
   animation:vinyl-ring 2.4s ease-out infinite;
 }
 @keyframes vinyl-ring{
-  0%  {box-shadow:0 0 0 0   rgba(184,115,51,.45);}
-  65% {box-shadow:0 0 0 14px rgba(184,115,51,0);}
-  100%{box-shadow:0 0 0 0   rgba(184,115,51,0);}
+  0%  {box-shadow:0 0 0 0   rgba(171,180,149,.45);}
+  65% {box-shadow:0 0 0 14px rgba(171,180,149,0);}
+  100%{box-shadow:0 0 0 0   rgba(171,180,149,0);}
 }
 
 /* disc */
@@ -677,8 +677,8 @@ footer .fc a{color:inherit;text-decoration:none;}
   width:27px;height:27px;border-radius:50%;
   background:
     radial-gradient(circle at 38% 35%, rgba(255,255,255,.22) 0%, transparent 55%),
-    conic-gradient(from 0deg,#7A4A1E,#B87333 18%,#F7E7CE 36%,#B87333 54%,#7A4A1E 72%,#B87333 90%,#F7E7CE,#B87333,#7A4A1E);
-  box-shadow:0 0 0 1.5px rgba(184,115,51,.5), inset 0 1px 3px rgba(255,255,255,.2);
+    conic-gradient(from 0deg,#545C3E,#ABB495 18%,#F7E7CE 36%,#ABB495 54%,#545C3E 72%,#ABB495 90%,#F7E7CE,#ABB495,#545C3E);
+  box-shadow:0 0 0 1.5px rgba(171,180,149,.5), inset 0 1px 3px rgba(255,255,255,.2);
   display:flex;align-items:center;justify-content:center;
 }
 /* spindle hole */
@@ -703,21 +703,21 @@ footer .fc a{color:inherit;text-decoration:none;}
   font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;
   color:#F7E7CE;white-space:nowrap;cursor:pointer;opacity:0;z-index:10;overflow:hidden;
   background:linear-gradient(145deg,#5E6647 0%,#383E2A 55%,#272B1C 100%);
-  border:1px solid rgba(214,160,104,.85);
+  border:1px solid rgba(195,202,176,.85);
   box-shadow:0 14px 34px rgba(24,27,18,.45),inset 0 1px 0 rgba(255,255,255,.22),inset 0 0 0 3px rgba(56,62,42,.9),inset 0 0 0 4px rgba(247,231,206,.28);
   text-shadow:0 1px 2px rgba(0,0,0,.35);
 }
-.envelope-hint .eh-ico{width:20px;height:20px;flex-shrink:0;color:#E6B98A;filter:drop-shadow(0 0 4px rgba(230,185,138,.55));}
+.envelope-hint .eh-ico{width:20px;height:20px;flex-shrink:0;color:#CDD3BC;filter:drop-shadow(0 0 4px rgba(205,211,188,.55));}
 .envelope-hint::before{
   content:'';position:absolute;top:0;left:-70%;width:45%;height:100%;transform:skewX(-22deg);pointer-events:none;
   background:linear-gradient(90deg,transparent,rgba(247,231,206,.45),transparent);animation:ehShine 3.2s ease-in-out infinite;
 }
 .envelope-hint::after{
   content:'';position:absolute;inset:-1px;border-radius:999px;pointer-events:none;
-  box-shadow:0 0 0 0 rgba(184,115,51,.55);animation:ehRing 2.4s ease-out infinite;
+  box-shadow:0 0 0 0 rgba(171,180,149,.55);animation:ehRing 2.4s ease-out infinite;
 }
 @keyframes ehShine{0%,55%{left:-70%}100%{left:130%}}
-@keyframes ehRing{0%{box-shadow:0 0 0 0 rgba(184,115,51,.55)}100%{box-shadow:0 0 0 16px rgba(184,115,51,0)}}
+@keyframes ehRing{0%{box-shadow:0 0 0 0 rgba(171,180,149,.55)}100%{box-shadow:0 0 0 16px rgba(171,180,149,0)}}
 @media(prefers-reduced-motion:reduce){.envelope-hint::before,.envelope-hint::after{animation:none;}}
 #loader{display:none;}
 
@@ -793,13 +793,13 @@ footer .fc{font-size:12px;opacity:.6;}
   <!-- ORNAMENTO -->
   <div class="orn rv">
     <svg viewBox="0 0 170 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M6 19 Q44 7 85 19 T164 19" stroke="#B87333" stroke-width=".85" opacity=".5"/>
-      <path d="M6 21 Q44 33 85 21 T164 21" stroke="#B87333" stroke-width=".5" opacity=".22"/>
+      <path d="M6 19 Q44 7 85 19 T164 19" stroke="#ABB495" stroke-width=".85" opacity=".5"/>
+      <path d="M6 21 Q44 33 85 21 T164 21" stroke="#ABB495" stroke-width=".5" opacity=".22"/>
       <!-- Estrella central Texas -->
-      <polygon points="85,4 88.1,13.8 98.5,13.8 90.2,19.6 93.3,29.4 85,23.6 76.7,29.4 79.8,19.6 71.5,13.8 81.9,13.8" fill="#B87333" opacity=".75"/>
+      <polygon points="85,4 88.1,13.8 98.5,13.8 90.2,19.6 93.3,29.4 85,23.6 76.7,29.4 79.8,19.6 71.5,13.8 81.9,13.8" fill="#ABB495" opacity=".75"/>
       <!-- Estrellas pequeñas -->
-      <polygon points="32,10 33.2,14 37.5,14 34,16.8 35.2,20.8 32,18 28.8,20.8 30,16.8 26.5,14 30.8,14" fill="#B87333" opacity=".38"/>
-      <polygon points="138,10 139.2,14 143.5,14 140,16.8 141.2,20.8 138,18 134.8,20.8 136,16.8 132.5,14 136.8,14" fill="#B87333" opacity=".38"/>
+      <polygon points="32,10 33.2,14 37.5,14 34,16.8 35.2,20.8 32,18 28.8,20.8 30,16.8 26.5,14 30.8,14" fill="#ABB495" opacity=".38"/>
+      <polygon points="138,10 139.2,14 143.5,14 140,16.8 141.2,20.8 138,18 134.8,20.8 136,16.8 132.5,14 136.8,14" fill="#ABB495" opacity=".38"/>
     </svg>
   </div>
 
@@ -834,11 +834,11 @@ footer .fc{font-size:12px;opacity:.6;}
   <!-- ORNAMENTO -->
   <div class="orn rv">
     <svg viewBox="0 0 170 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M6 19 Q44 7 85 19 T164 19" stroke="#B87333" stroke-width=".85" opacity=".5"/>
-      <path d="M6 21 Q44 33 85 21 T164 21" stroke="#B87333" stroke-width=".5" opacity=".22"/>
-      <polygon points="85,4 88.1,13.8 98.5,13.8 90.2,19.6 93.3,29.4 85,23.6 76.7,29.4 79.8,19.6 71.5,13.8 81.9,13.8" fill="#B87333" opacity=".75"/>
-      <polygon points="32,10 33.2,14 37.5,14 34,16.8 35.2,20.8 32,18 28.8,20.8 30,16.8 26.5,14 30.8,14" fill="#B87333" opacity=".38"/>
-      <polygon points="138,10 139.2,14 143.5,14 140,16.8 141.2,20.8 138,18 134.8,20.8 136,16.8 132.5,14 136.8,14" fill="#B87333" opacity=".38"/>
+      <path d="M6 19 Q44 7 85 19 T164 19" stroke="#ABB495" stroke-width=".85" opacity=".5"/>
+      <path d="M6 21 Q44 33 85 21 T164 21" stroke="#ABB495" stroke-width=".5" opacity=".22"/>
+      <polygon points="85,4 88.1,13.8 98.5,13.8 90.2,19.6 93.3,29.4 85,23.6 76.7,29.4 79.8,19.6 71.5,13.8 81.9,13.8" fill="#ABB495" opacity=".75"/>
+      <polygon points="32,10 33.2,14 37.5,14 34,16.8 35.2,20.8 32,18 28.8,20.8 30,16.8 26.5,14 30.8,14" fill="#ABB495" opacity=".38"/>
+      <polygon points="138,10 139.2,14 143.5,14 140,16.8 141.2,20.8 138,18 134.8,20.8 136,16.8 132.5,14 136.8,14" fill="#ABB495" opacity=".38"/>
     </svg>
   </div>
 
@@ -888,11 +888,11 @@ footer .fc{font-size:12px;opacity:.6;}
   <!-- ORNAMENTO -->
   <div class="orn rv">
     <svg viewBox="0 0 170 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M6 19 Q44 7 85 19 T164 19" stroke="#B87333" stroke-width=".85" opacity=".5"/>
-      <path d="M6 21 Q44 33 85 21 T164 21" stroke="#B87333" stroke-width=".5" opacity=".22"/>
-      <polygon points="85,4 88.1,13.8 98.5,13.8 90.2,19.6 93.3,29.4 85,23.6 76.7,29.4 79.8,19.6 71.5,13.8 81.9,13.8" fill="#B87333" opacity=".75"/>
-      <polygon points="32,10 33.2,14 37.5,14 34,16.8 35.2,20.8 32,18 28.8,20.8 30,16.8 26.5,14 30.8,14" fill="#B87333" opacity=".38"/>
-      <polygon points="138,10 139.2,14 143.5,14 140,16.8 141.2,20.8 138,18 134.8,20.8 136,16.8 132.5,14 136.8,14" fill="#B87333" opacity=".38"/>
+      <path d="M6 19 Q44 7 85 19 T164 19" stroke="#ABB495" stroke-width=".85" opacity=".5"/>
+      <path d="M6 21 Q44 33 85 21 T164 21" stroke="#ABB495" stroke-width=".5" opacity=".22"/>
+      <polygon points="85,4 88.1,13.8 98.5,13.8 90.2,19.6 93.3,29.4 85,23.6 76.7,29.4 79.8,19.6 71.5,13.8 81.9,13.8" fill="#ABB495" opacity=".75"/>
+      <polygon points="32,10 33.2,14 37.5,14 34,16.8 35.2,20.8 32,18 28.8,20.8 30,16.8 26.5,14 30.8,14" fill="#ABB495" opacity=".38"/>
+      <polygon points="138,10 139.2,14 143.5,14 140,16.8 141.2,20.8 138,18 134.8,20.8 136,16.8 132.5,14 136.8,14" fill="#ABB495" opacity=".38"/>
     </svg>
   </div>
 
@@ -924,11 +924,11 @@ footer .fc{font-size:12px;opacity:.6;}
   <!-- ORNAMENTO -->
   <div class="orn rv">
     <svg viewBox="0 0 170 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M6 19 Q44 7 85 19 T164 19" stroke="#B87333" stroke-width=".85" opacity=".5"/>
-      <path d="M6 21 Q44 33 85 21 T164 21" stroke="#B87333" stroke-width=".5" opacity=".22"/>
-      <polygon points="85,4 88.1,13.8 98.5,13.8 90.2,19.6 93.3,29.4 85,23.6 76.7,29.4 79.8,19.6 71.5,13.8 81.9,13.8" fill="#B87333" opacity=".75"/>
-      <polygon points="32,10 33.2,14 37.5,14 34,16.8 35.2,20.8 32,18 28.8,20.8 30,16.8 26.5,14 30.8,14" fill="#B87333" opacity=".38"/>
-      <polygon points="138,10 139.2,14 143.5,14 140,16.8 141.2,20.8 138,18 134.8,20.8 136,16.8 132.5,14 136.8,14" fill="#B87333" opacity=".38"/>
+      <path d="M6 19 Q44 7 85 19 T164 19" stroke="#ABB495" stroke-width=".85" opacity=".5"/>
+      <path d="M6 21 Q44 33 85 21 T164 21" stroke="#ABB495" stroke-width=".5" opacity=".22"/>
+      <polygon points="85,4 88.1,13.8 98.5,13.8 90.2,19.6 93.3,29.4 85,23.6 76.7,29.4 79.8,19.6 71.5,13.8 81.9,13.8" fill="#ABB495" opacity=".75"/>
+      <polygon points="32,10 33.2,14 37.5,14 34,16.8 35.2,20.8 32,18 28.8,20.8 30,16.8 26.5,14 30.8,14" fill="#ABB495" opacity=".38"/>
+      <polygon points="138,10 139.2,14 143.5,14 140,16.8 141.2,20.8 138,18 134.8,20.8 136,16.8 132.5,14 136.8,14" fill="#ABB495" opacity=".38"/>
     </svg>
   </div>
 
@@ -970,11 +970,11 @@ footer .fc{font-size:12px;opacity:.6;}
   <!-- ORNAMENTO -->
   <div class="orn rv">
     <svg viewBox="0 0 170 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M6 19 Q44 7 85 19 T164 19" stroke="#B87333" stroke-width=".85" opacity=".5"/>
-      <path d="M6 21 Q44 33 85 21 T164 21" stroke="#B87333" stroke-width=".5" opacity=".22"/>
-      <polygon points="85,4 88.1,13.8 98.5,13.8 90.2,19.6 93.3,29.4 85,23.6 76.7,29.4 79.8,19.6 71.5,13.8 81.9,13.8" fill="#B87333" opacity=".75"/>
-      <polygon points="32,10 33.2,14 37.5,14 34,16.8 35.2,20.8 32,18 28.8,20.8 30,16.8 26.5,14 30.8,14" fill="#B87333" opacity=".38"/>
-      <polygon points="138,10 139.2,14 143.5,14 140,16.8 141.2,20.8 138,18 134.8,20.8 136,16.8 132.5,14 136.8,14" fill="#B87333" opacity=".38"/>
+      <path d="M6 19 Q44 7 85 19 T164 19" stroke="#ABB495" stroke-width=".85" opacity=".5"/>
+      <path d="M6 21 Q44 33 85 21 T164 21" stroke="#ABB495" stroke-width=".5" opacity=".22"/>
+      <polygon points="85,4 88.1,13.8 98.5,13.8 90.2,19.6 93.3,29.4 85,23.6 76.7,29.4 79.8,19.6 71.5,13.8 81.9,13.8" fill="#ABB495" opacity=".75"/>
+      <polygon points="32,10 33.2,14 37.5,14 34,16.8 35.2,20.8 32,18 28.8,20.8 30,16.8 26.5,14 30.8,14" fill="#ABB495" opacity=".38"/>
+      <polygon points="138,10 139.2,14 143.5,14 140,16.8 141.2,20.8 138,18 134.8,20.8 136,16.8 132.5,14 136.8,14" fill="#ABB495" opacity=".38"/>
     </svg>
   </div>
 
@@ -1034,11 +1034,11 @@ footer .fc{font-size:12px;opacity:.6;}
   <!-- ORNAMENTO -->
   <div class="orn rv">
     <svg viewBox="0 0 170 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M6 19 Q44 7 85 19 T164 19" stroke="#B87333" stroke-width=".85" opacity=".5"/>
-      <path d="M6 21 Q44 33 85 21 T164 21" stroke="#B87333" stroke-width=".5" opacity=".22"/>
-      <polygon points="85,4 88.1,13.8 98.5,13.8 90.2,19.6 93.3,29.4 85,23.6 76.7,29.4 79.8,19.6 71.5,13.8 81.9,13.8" fill="#B87333" opacity=".75"/>
-      <polygon points="32,10 33.2,14 37.5,14 34,16.8 35.2,20.8 32,18 28.8,20.8 30,16.8 26.5,14 30.8,14" fill="#B87333" opacity=".38"/>
-      <polygon points="138,10 139.2,14 143.5,14 140,16.8 141.2,20.8 138,18 134.8,20.8 136,16.8 132.5,14 136.8,14" fill="#B87333" opacity=".38"/>
+      <path d="M6 19 Q44 7 85 19 T164 19" stroke="#ABB495" stroke-width=".85" opacity=".5"/>
+      <path d="M6 21 Q44 33 85 21 T164 21" stroke="#ABB495" stroke-width=".5" opacity=".22"/>
+      <polygon points="85,4 88.1,13.8 98.5,13.8 90.2,19.6 93.3,29.4 85,23.6 76.7,29.4 79.8,19.6 71.5,13.8 81.9,13.8" fill="#ABB495" opacity=".75"/>
+      <polygon points="32,10 33.2,14 37.5,14 34,16.8 35.2,20.8 32,18 28.8,20.8 30,16.8 26.5,14 30.8,14" fill="#ABB495" opacity=".38"/>
+      <polygon points="138,10 139.2,14 143.5,14 140,16.8 141.2,20.8 138,18 134.8,20.8 136,16.8 132.5,14 136.8,14" fill="#ABB495" opacity=".38"/>
     </svg>
   </div>
 
@@ -1056,18 +1056,18 @@ footer .fc{font-size:12px;opacity:.6;}
             <rect x="26" y="72" width="148" height="104" rx="4" fill="url(#gbShade)"/>
             <rect x="88" y="72" width="24" height="104" fill="url(#gbCopper)"/>
             <rect x="26" y="112" width="148" height="15" fill="url(#gbCopper)"/>
-            <rect x="26.7" y="72.7" width="146.6" height="102.6" rx="3.3" stroke="#7A4A1E" stroke-width="1.4"/>
+            <rect x="26.7" y="72.7" width="146.6" height="102.6" rx="3.3" stroke="#545C3E" stroke-width="1.4"/>
             <g class="giftbox-lid">
               <rect x="16" y="54" width="168" height="26" rx="4" fill="#7B8561"/>
-              <rect x="16.7" y="54.7" width="166.6" height="24.6" rx="3.3" stroke="#7A4A1E" stroke-width="1.4"/>
+              <rect x="16.7" y="54.7" width="166.6" height="24.6" rx="3.3" stroke="#545C3E" stroke-width="1.4"/>
               <rect x="88" y="54" width="24" height="26" fill="url(#gbCopper)"/>
-              <path d="M100 54 C100 40 84 26 70 32 C58 37 62 52 78 54 Z" fill="url(#gbCopper)" stroke="#7A4A1E" stroke-width="1.2"/>
-              <path d="M100 54 C100 40 116 26 130 32 C142 37 138 52 122 54 Z" fill="url(#gbCopper)" stroke="#7A4A1E" stroke-width="1.2"/>
-              <circle cx="100" cy="52" r="8" fill="#F7E7CE" stroke="#7A4A1E" stroke-width="1.2"/>
+              <path d="M100 54 C100 40 84 26 70 32 C58 37 62 52 78 54 Z" fill="url(#gbCopper)" stroke="#545C3E" stroke-width="1.2"/>
+              <path d="M100 54 C100 40 116 26 130 32 C142 37 138 52 122 54 Z" fill="url(#gbCopper)" stroke="#545C3E" stroke-width="1.2"/>
+              <circle cx="100" cy="52" r="8" fill="#F7E7CE" stroke="#545C3E" stroke-width="1.2"/>
             </g>
             <defs>
               <linearGradient id="gbShade" x1="26" y1="72" x2="174" y2="176" gradientUnits="userSpaceOnUse"><stop stop-color="#ffffff" stop-opacity=".16"/><stop offset="1" stop-color="#000000" stop-opacity=".22"/></linearGradient>
-              <linearGradient id="gbCopper" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#F7E7CE"/><stop offset=".45" stop-color="#B87333"/><stop offset="1" stop-color="#7A4A1E"/></linearGradient>
+              <linearGradient id="gbCopper" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#F7E7CE"/><stop offset=".45" stop-color="#ABB495"/><stop offset="1" stop-color="#545C3E"/></linearGradient>
             </defs>
           </svg>
         </button>
@@ -1141,11 +1141,11 @@ footer .fc{font-size:12px;opacity:.6;}
   <!-- ORNAMENTO -->
   <div class="orn rv">
     <svg viewBox="0 0 170 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M6 19 Q44 7 85 19 T164 19" stroke="#B87333" stroke-width=".85" opacity=".5"/>
-      <path d="M6 21 Q44 33 85 21 T164 21" stroke="#B87333" stroke-width=".5" opacity=".22"/>
-      <polygon points="85,4 88.1,13.8 98.5,13.8 90.2,19.6 93.3,29.4 85,23.6 76.7,29.4 79.8,19.6 71.5,13.8 81.9,13.8" fill="#B87333" opacity=".75"/>
-      <polygon points="32,10 33.2,14 37.5,14 34,16.8 35.2,20.8 32,18 28.8,20.8 30,16.8 26.5,14 30.8,14" fill="#B87333" opacity=".38"/>
-      <polygon points="138,10 139.2,14 143.5,14 140,16.8 141.2,20.8 138,18 134.8,20.8 136,16.8 132.5,14 136.8,14" fill="#B87333" opacity=".38"/>
+      <path d="M6 19 Q44 7 85 19 T164 19" stroke="#ABB495" stroke-width=".85" opacity=".5"/>
+      <path d="M6 21 Q44 33 85 21 T164 21" stroke="#ABB495" stroke-width=".5" opacity=".22"/>
+      <polygon points="85,4 88.1,13.8 98.5,13.8 90.2,19.6 93.3,29.4 85,23.6 76.7,29.4 79.8,19.6 71.5,13.8 81.9,13.8" fill="#ABB495" opacity=".75"/>
+      <polygon points="32,10 33.2,14 37.5,14 34,16.8 35.2,20.8 32,18 28.8,20.8 30,16.8 26.5,14 30.8,14" fill="#ABB495" opacity=".38"/>
+      <polygon points="138,10 139.2,14 143.5,14 140,16.8 141.2,20.8 138,18 134.8,20.8 136,16.8 132.5,14 136.8,14" fill="#ABB495" opacity=".38"/>
     </svg>
   </div>
 
@@ -1165,11 +1165,11 @@ footer .fc{font-size:12px;opacity:.6;}
   <!-- ORNAMENTO -->
   <div class="orn rv">
     <svg viewBox="0 0 170 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M6 19 Q44 7 85 19 T164 19" stroke="#B87333" stroke-width=".85" opacity=".5"/>
-      <path d="M6 21 Q44 33 85 21 T164 21" stroke="#B87333" stroke-width=".5" opacity=".22"/>
-      <polygon points="85,4 88.1,13.8 98.5,13.8 90.2,19.6 93.3,29.4 85,23.6 76.7,29.4 79.8,19.6 71.5,13.8 81.9,13.8" fill="#B87333" opacity=".75"/>
-      <polygon points="32,10 33.2,14 37.5,14 34,16.8 35.2,20.8 32,18 28.8,20.8 30,16.8 26.5,14 30.8,14" fill="#B87333" opacity=".38"/>
-      <polygon points="138,10 139.2,14 143.5,14 140,16.8 141.2,20.8 138,18 134.8,20.8 136,16.8 132.5,14 136.8,14" fill="#B87333" opacity=".38"/>
+      <path d="M6 19 Q44 7 85 19 T164 19" stroke="#ABB495" stroke-width=".85" opacity=".5"/>
+      <path d="M6 21 Q44 33 85 21 T164 21" stroke="#ABB495" stroke-width=".5" opacity=".22"/>
+      <polygon points="85,4 88.1,13.8 98.5,13.8 90.2,19.6 93.3,29.4 85,23.6 76.7,29.4 79.8,19.6 71.5,13.8 81.9,13.8" fill="#ABB495" opacity=".75"/>
+      <polygon points="32,10 33.2,14 37.5,14 34,16.8 35.2,20.8 32,18 28.8,20.8 30,16.8 26.5,14 30.8,14" fill="#ABB495" opacity=".38"/>
+      <polygon points="138,10 139.2,14 143.5,14 140,16.8 141.2,20.8 138,18 134.8,20.8 136,16.8 132.5,14 136.8,14" fill="#ABB495" opacity=".38"/>
     </svg>
   </div>
 
@@ -1191,11 +1191,11 @@ footer .fc{font-size:12px;opacity:.6;}
   <!-- ORNAMENTO -->
   <div class="orn rv">
     <svg viewBox="0 0 170 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M6 19 Q44 7 85 19 T164 19" stroke="#B87333" stroke-width=".85" opacity=".5"/>
-      <path d="M6 21 Q44 33 85 21 T164 21" stroke="#B87333" stroke-width=".5" opacity=".22"/>
-      <polygon points="85,4 88.1,13.8 98.5,13.8 90.2,19.6 93.3,29.4 85,23.6 76.7,29.4 79.8,19.6 71.5,13.8 81.9,13.8" fill="#B87333" opacity=".75"/>
-      <polygon points="32,10 33.2,14 37.5,14 34,16.8 35.2,20.8 32,18 28.8,20.8 30,16.8 26.5,14 30.8,14" fill="#B87333" opacity=".38"/>
-      <polygon points="138,10 139.2,14 143.5,14 140,16.8 141.2,20.8 138,18 134.8,20.8 136,16.8 132.5,14 136.8,14" fill="#B87333" opacity=".38"/>
+      <path d="M6 19 Q44 7 85 19 T164 19" stroke="#ABB495" stroke-width=".85" opacity=".5"/>
+      <path d="M6 21 Q44 33 85 21 T164 21" stroke="#ABB495" stroke-width=".5" opacity=".22"/>
+      <polygon points="85,4 88.1,13.8 98.5,13.8 90.2,19.6 93.3,29.4 85,23.6 76.7,29.4 79.8,19.6 71.5,13.8 81.9,13.8" fill="#ABB495" opacity=".75"/>
+      <polygon points="32,10 33.2,14 37.5,14 34,16.8 35.2,20.8 32,18 28.8,20.8 30,16.8 26.5,14 30.8,14" fill="#ABB495" opacity=".38"/>
+      <polygon points="138,10 139.2,14 143.5,14 140,16.8 141.2,20.8 138,18 134.8,20.8 136,16.8 132.5,14 136.8,14" fill="#ABB495" opacity=".38"/>
     </svg>
   </div>
 
@@ -1453,7 +1453,7 @@ function launchPage(){
 ══════════════════════════════════════ */
 function initStars(){
   var layer = document.getElementById('stars');
-  var colors = ['#B87333','#F7E7CE','#D19A66','#F7E7CE','#B87333'];
+  var colors = ['#ABB495','#F7E7CE','#C3CAB0','#F7E7CE','#ABB495'];
   for(var i=0; i<24; i++){
     var s = document.createElement('div');
     s.className = 'star';
@@ -1842,7 +1842,7 @@ function initDressCode(){
     var ctx = canvas.getContext('2d'), dpr = Math.min(window.devicePixelRatio || 1, 2), stage = canvas.parentElement;
     var W = stage.offsetWidth, H = stage.offsetHeight;
     canvas.width = W * dpr; canvas.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    var colors = ['#B87333','#F7E7CE','#7A4A1E','#ABB495','#636B4D','#FFFFFF','#D19A66'], parts = [];
+    var colors = ['#ABB495','#F7E7CE','#545C3E','#ABB495','#636B4D','#FFFFFF','#C3CAB0'], parts = [];
     var cx = W / 2, cy = H / 2, n = window.innerWidth < 520 ? 70 : 120;
     for(var i = 0; i < n; i++){
       var a = (Math.PI * 2 * i / n) + (i % 7) * 0.11, sp = 3.4 + (i % 11) * 0.62;
@@ -1893,7 +1893,7 @@ function initDressCode(){
   var tag = document.getElementById('giftTag'), swing = document.getElementById('tagSwing'), burstEl = document.getElementById('tagBurst');
   if(!tag) return;
   function sparkle(){
-    var cols = ['#B87333','#F7E7CE','#ABB495','#D19A66','#636B4D'];
+    var cols = ['#ABB495','#F7E7CE','#ABB495','#C3CAB0','#636B4D'];
     for(var i = 0; i < 16; i++){
       var d = document.createElement('i'); d.style.background = cols[i % cols.length]; burstEl.appendChild(d);
       var a = Math.PI * 2 * i / 16, r = 90 + Math.random() * 70;
